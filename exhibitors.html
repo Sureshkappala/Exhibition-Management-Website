@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibitors Directory - Stackly Exhibition Platform</title>
+  <meta name="description" content="Browse verified exhibitors, company profiles, and locate stall coordinates on the expo floor map.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .exhibitor-card-full {
+      background-color: var(--bg-card-light);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--accent-green) !important;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: var(--transition-smooth);
+      outline: none !important;
+    }
+    
+    .exhibitor-card-full:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+      border-color: var(--accent-gold) !important;
+    }
+    
+    .exhibitor-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .exhibitor-avatar-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 184, 0, 0.1), rgba(255, 107, 53, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+    }
+    
+    .exhibitor-title-meta h3 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+    }
+    
+    .exhibitor-industry-tag {
+      font-size: 0.75rem;
+      background-color: rgba(15, 23, 42, 0.05);
+      padding: 2px 8px;
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    
+    .exhibitor-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    
+    .exhibitor-footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(15, 23, 42, 0.05);
+      padding-top: 15px;
+    }
+    
+    .booth-number-tag {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--accent-orange);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body class="dark-nav">
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+      </a>
+            <ul class="nav-links">
+        <!-- Mobile Drawer Header -->
+        <li class="drawer-header">
+          <img src="assets/images/logo.webp" alt="Stackly Logo">
+          <button type="button" class="drawer-close" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </button>
+        </li>
+        <!-- Mobile Search -->
+        <li class="drawer-search">
+          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="exhibitions.html">Exhibitions</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="exhibitors.html" class="active">Exhibitors</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+                <li class="nav-actions-mobile">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="registration.html" class="btn btn-primary">Register</a>
+        </li>
+        <!-- Mobile Contact Info -->
+        <li class="drawer-contact-info">
+          <h5>Contact Info</h5>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> support@stackly.org</p>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="registration.html" class="btn btn-primary">Register</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Interior Banner -->
+  <header class="interior-banner">
+    <div class="container">
+      <h1>Exhibitors Directory</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> / <span>Exhibitors</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Directory Section -->
+  <section class="bg-light">
+    <div class="container">
+      
+      <!-- Filter Inputs -->
+      <div class="filtering-controls" style="grid-template-columns: 2fr 1fr; max-width: 800px; margin: 0 auto 50px auto;">
+        <input type="text" id="search-exhibitors" class="filter-input" placeholder="Search exhibitors by company name...">
+        <select id="filter-industry" class="filter-input">
+          <option value="all">All Industries</option>
+          <option value="software">Software & Tech</option>
+          <option value="automotive">Automotive</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="finance">Finance & Investment</option>
+          <option value="art">Art & Media</option>
+          <option value="manufacturing">Manufacturing</option>
+        </select>
+      </div>
+
+      <!-- Exhibitors Grid -->
+      <div class="grid-3">
+        
+        <!-- Card 1 -->
+        <div class="exhibitor-card-full" data-industry="software">
+          <div>
+            <div class="exhibitor-header">
+              <div class="exhibitor-avatar-circle" style="background: linear-gradient(135deg, #FFB800, #FF6B35);">NC</div>
+              <div class="exhibitor-title-meta">
+                <h3>Nexis Core</h3>
+                <span class="exhibitor-industry-tag">Software & Tech</span>
+              </div>
+            </div>
+            <div class="exhibitor-body">
+              <p>Specializing in enterprise cloud architecture, quantum databases, and custom server infrastructure for scale startups.</p>
+            </div>
+          </div>
+          <div class="exhibitor-footer-meta">
+            <span class="booth-number-tag"><i class="fa-solid fa-store"></i> Booth A-101</span>
+            <a href="exhibition-details.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Details</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="exhibitor-card-full" data-industry="automotive">
+          <div>
+            <div class="exhibitor-header">
+              <div class="exhibitor-avatar-circle" style="background: linear-gradient(135deg, #00b4d8, #10B981);">VT</div>
+              <div class="exhibitor-title-meta">
+                <h3>Veloct Auto</h3>
+                <span class="exhibitor-industry-tag">Automotive</span>
+              </div>
+            </div>
+            <div class="exhibitor-body">
+              <p>Developing next-gen high-efficiency solid-state batteries and drive-train units for autonomous EV trucks and delivery vans.</p>
+            </div>
+          </div>
+          <div class="exhibitor-footer-meta">
+            <span class="booth-number-tag"><i class="fa-solid fa-store"></i> Booth B-204</span>
+            <a href="exhibition-details.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Details</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="exhibitor-card-full" data-industry="healthcare">
+          <div>
+            <div class="exhibitor-header">
+              <div class="exhibitor-avatar-circle" style="background: linear-gradient(135deg, #EF4444, #F59E0B);">HL</div>
+              <div class="exhibitor-title-meta">
+                <h3>Helios Lab</h3>
+                <span class="exhibitor-industry-tag">Healthcare</span>
+              </div>
+            </div>
+            <div class="exhibitor-body">
+              <p>Manufacturing remote telemetry diagnostic cuffs, heart-rate monitors, and autonomous micro-surgical tools.</p>
+            </div>
+          </div>
+          <div class="exhibitor-footer-meta">
+            <span class="booth-number-tag"><i class="fa-solid fa-store"></i> Booth C-302</span>
+            <a href="exhibition-details.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Details</a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="exhibitor-card-full" data-industry="finance">
+          <div>
+            <div class="exhibitor-header">
+              <div class="exhibitor-avatar-circle" style="background: linear-gradient(135deg, #6366F1, #EC4899);">AP</div>
+              <div class="exhibitor-title-meta">
+                <h3>Apex Capital</h3>
+                <span class="exhibitor-industry-tag">Finance</span>
+              </div>
+            </div>
+            <div class="exhibitor-body">
+              <p>A venture capital syndicate matching funding requirements for promising seed-stage hardware and logistics startups.</p>
+            </div>
+          </div>
+          <div class="exhibitor-footer-meta">
+            <span class="booth-number-tag"><i class="fa-solid fa-store"></i> Booth A-105</span>
+            <a href="exhibition-details.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Details</a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="exhibitor-card-full" data-industry="art">
+          <div>
+            <div class="exhibitor-header">
+              <div class="exhibitor-avatar-circle" style="background: linear-gradient(135deg, #10B981, #3B82F6);">CV</div>
+              <div class="exhibitor-title-meta">
+                <h3>Canvas Media</h3>
+                <span class="exhibitor-industry-tag">Art & Media</span>
+              </div>
+            </div>
+            <div class="exhibitor-body">
+              <p>Curating physical exhibitions of international abstract expressionists, oil painters, and modern canvas art curators.</p>
+            </div>
+          </div>
+          <div class="exhibitor-footer-meta">
+            <span class="booth-number-tag"><i class="fa-solid fa-store"></i> Booth D-112</span>
+            <a href="exhibition-details.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Details</a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="exhibitor-card-full" data-industry="manufacturing">
+          <div>
+            <div class="exhibitor-header">
+              <div class="exhibitor-avatar-circle" style="background: linear-gradient(135deg, #6B7280, #374151);">MP</div>
+              <div class="exhibitor-title-meta">
+                <h3>Midwest Power</h3>
+                <span class="exhibitor-industry-tag">Manufacturing</span>
+              </div>
+            </div>
+            <div class="exhibitor-body">
+              <p>Distributing heavy-load assembly lasers, CNC cutters, aluminum casting chambers, and custom conveyor bearings.</p>
+            </div>
+          </div>
+          <div class="exhibitor-footer-meta">
+            <span class="booth-number-tag"><i class="fa-solid fa-store"></i> Booth E-102</span>
+            <a href="exhibition-details.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Details</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+          </div>
+          <p class="footer-desc">Mobilizing rapid exhibition coordinating systems, visitor matchmaking resources, live booth mapping grids, and custom corporate expos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="exhibitions.html">Exhibitions</a></li>
+            <li><a href="events.html">Events Schedule</a></li>
+            <li><a href="exhibitors.html">Exhibitors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Coordinates</a></li>
+            <li><a href="about.html#faq">FAQ & Agreements</a></li>
+            <li><a href="admin-dashboard.html">System Portals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p class="footer-desc" style="margin-bottom: 15px;">Get quarterly emergency updates, newly booked expos, and registered visitors trends reports.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!'); this.reset();">
+            <input type="email" class="footer-newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved. Designed for professional exhibition management.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="about.html#faq">Security Audits</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js?v=7.0"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speakers Directory - Stackly Exhibition Platform</title>
+  <meta name="description" content="Meet our verified keynote speakers, panel experts, academic lecturers, and trade analysts.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .speaker-grid-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    @media (max-width: 900px) {
+      .speaker-grid-page {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .speaker-grid-page {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="dark-nav">
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+      </a>
+            <ul class="nav-links">
+        <!-- Mobile Drawer Header -->
+        <li class="drawer-header">
+          <img src="assets/images/logo.webp" alt="Stackly Logo">
+          <button type="button" class="drawer-close" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </button>
+        </li>
+        <!-- Mobile Search -->
+        <li class="drawer-search">
+          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="exhibitions.html">Exhibitions</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="exhibitors.html">Exhibitors</a></li>
+        <li><a href="speakers.html" class="active">Speakers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+                <li class="nav-actions-mobile">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="registration.html" class="btn btn-primary">Register</a>
+        </li>
+        <!-- Mobile Contact Info -->
+        <li class="drawer-contact-info">
+          <h5>Contact Info</h5>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> support@stackly.org</p>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="registration.html" class="btn btn-primary">Register</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Interior Banner -->
+  <header class="interior-banner">
+    <div class="container">
+      <h1>Keynote Speakers</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> / <span>Speakers</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Speaker Directory Section -->
+  <section class="bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Expert Panelists & Lecturers</h2>
+        <p>Connect with thought leaders sharing insights across technical disciplines and trade markets.</p>
+      </div>
+
+      <div class="speaker-grid-page">
+        <!-- Speaker 1 -->
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="assets/images/speaker1.webp" alt="Dr. Adrian Vance">
+            <div class="speaker-socials">
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="speaker-info">
+            <h3>Dr. Adrian Vance</h3>
+            <p class="speaker-title">AI Ethics Lead at CyberSec</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); font-weight:600; margin-bottom:5px;">Expertise: AI Governance & Trust</p>
+            <p class="speaker-topic">Session: Ethical Implications of Generative AI in Business Models (Day 1 - 09:00 AM, Hall A)</p>
+          </div>
+        </div>
+
+        <!-- Speaker 2 -->
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="assets/images/speaker2.webp" alt="Elena Rostova">
+            <div class="speaker-socials">
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="speaker-info">
+            <h3>Elena Rostova</h3>
+            <p class="speaker-title">VP of Product, EV Motors</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); font-weight:600; margin-bottom:5px;">Expertise: Sustainable Battery Tech</p>
+            <p class="speaker-topic">Session: Designing the Next Generation of Solid-State EV Batteries (Day 2 - 10:00 AM, Hall C)</p>
+          </div>
+        </div>
+
+        <!-- Speaker 3 -->
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="assets/images/speaker3.webp" alt="Marcus Sterling">
+            <div class="speaker-socials">
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="speaker-info">
+            <h3>Marcus Sterling</h3>
+            <p class="speaker-title">Chief Economist, Apex Fund</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); font-weight:600; margin-bottom:5px;">Expertise: Trade Market Analytics</p>
+            <p class="speaker-topic">Session: Navigating Global Trade Shifts in a Post-Digital Economy (Day 1 - 02:30 PM, Stage A)</p>
+          </div>
+        </div>
+
+        <!-- Speaker 4 -->
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="assets/images/speaker4.webp" alt="Dr. Clara Finch">
+            <div class="speaker-socials">
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="speaker-info">
+            <h3>Dr. Clara Finch</h3>
+            <p class="speaker-title">Director of Robotics, BioTech</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); font-weight:600; margin-bottom:5px;">Expertise: Medical Device Robotics</p>
+            <p class="speaker-topic">Session: Surgical Automation - Robotics in Modern Operation Theatres (Day 2 - 01:30 PM, Hall B)</p>
+          </div>
+        </div>
+
+        <!-- Speaker 5 (Re-using speaker1 assets for consistency) -->
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="assets/images/speaker1.webp" alt="Jonathan Pierce" style="filter: hue-rotate(90deg);">
+            <div class="speaker-socials">
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="speaker-info">
+            <h3>Jonathan Pierce</h3>
+            <p class="speaker-title">Director of UX, TechInnovate</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); font-weight:600; margin-bottom:5px;">Expertise: Immersive Event UI</p>
+            <p class="speaker-topic">Session: Designing Seamless Virtual Trade Experiences (Day 1 - 02:00 PM, Hall A)</p>
+          </div>
+        </div>
+
+        <!-- Speaker 6 (Re-using speaker2 assets with filter for diversity) -->
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="assets/images/speaker2.webp" alt="Sarah Jenkins" style="filter: hue-rotate(180deg);">
+            <div class="speaker-socials">
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="speaker-info">
+            <h3>Sarah Jenkins</h3>
+            <p class="speaker-title">VP of Operations, Veloct EV</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); font-weight:600; margin-bottom:5px;">Expertise: Supply Chain Management</p>
+            <p class="speaker-topic">Session: Supply Chain Scaling for Heavy Electric Fleet (Day 2 - 11:30 AM, Hall C)</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+          </div>
+          <p class="footer-desc">Mobilizing rapid exhibition coordinating systems, visitor matchmaking resources, live booth mapping grids, and custom corporate expos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="exhibitions.html">Exhibitions</a></li>
+            <li><a href="events.html">Events Schedule</a></li>
+            <li><a href="exhibitors.html">Exhibitors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Coordinates</a></li>
+            <li><a href="about.html#faq">FAQ & Agreements</a></li>
+            <li><a href="admin-dashboard.html">System Portals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p class="footer-desc" style="margin-bottom: 15px;">Get quarterly emergency updates, newly booked expos, and registered visitors trends reports.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!'); this.reset();">
+            <input type="email" class="footer-newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved. Designed for professional exhibition management.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="about.html#faq">Security Audits</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js?v=7.0"></script>
+</body>
+</html>

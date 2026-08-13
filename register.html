@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - Stackly Exhibition Platform</title>
+  <meta name="description" content="Create your Stackly profile to reserve tickets, book exhibition booths, or manage speaker listings.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body.auth-page {
+      background: radial-gradient(circle at center, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 60px 24px;
+      margin: 0;
+      font-family: var(--font-body);
+      box-sizing: border-box;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 500px;
+      background-color: rgba(18, 25, 45, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: var(--border-radius-md);
+      transition: var(--transition-smooth);
+      border: 2px solid var(--accent-green) !important;
+      box-sizing: border-box;
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .auth-header img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .auth-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .auth-header p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+
+    .back-to-home {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius-sm);
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 100;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+
+    .back-to-home:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateX(-3px);
+    }
+
+    .back-to-home svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--border-radius-sm) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      background-color: rgba(0, 0, 0, 0.3) !important;
+      color: white !important;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      box-sizing: border-box;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-green) !important;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25) !important;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .password-input-wrapper {
+      position: relative;
+    }
+
+    .password-toggle-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .password-toggle-icon:hover {
+      color: var(--white);
+    }
+
+    .form-error {
+      display: none;
+      color: #EF4444;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+
+    .form-group.error .form-control {
+      border-color: #EF4444 !important;
+    }
+
+    .form-group.error .form-error {
+      display: block;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      body.auth-page {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 40px 20px;
+      }
+
+      .back-to-home {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 auto 24px;
+        display: inline-flex;
+      }
+
+      .auth-card {
+        padding: 30px 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body class="auth-page">
+
+  <!-- Back to Home Button in top left -->
+  <a href="index.html" class="back-to-home" aria-label="Return to homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <span>Back to Home</span>
+  </a>
+
+  <!-- Center Auth Card -->
+  <div class="auth-card">
+    <div class="auth-header">
+      <!-- Stackly Logo -->
+      <img src="assets/images/logo.webp" alt="Stackly Logo">
+      <h2>Create Profile</h2>
+      <p>Join Stackly to manage your bookings and registrations</p>
+    </div>
+
+    <form id="register-form" novalidate>
+      <div class="form-group">
+        <label for="reg-name">Full Name</label>
+        <input type="text" id="reg-name" class="form-control" placeholder="Enter your full name" required>
+        <span class="form-error">Please enter letters and spaces only.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-email">Email Address</label>
+        <input type="email" id="reg-email" class="form-control" placeholder="example@domain.com" required>
+        <span class="form-error">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-phone">Mobile Number</label>
+        <input type="tel" id="reg-phone" class="form-control" placeholder="10-12 digit phone number" required>
+        <span class="form-error">Numbers only. Must be between 10 to 12 digits.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-type">Account Type</label>
+        <select id="reg-type" class="form-control" required style="cursor: pointer;">
+          <option value="visitor">Visitor Account</option>
+          <option value="exhibitor">Exhibitor Account</option>
+        </select>
+        <span class="form-error">Please select an account type.</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required>
+            <i class="fa-solid fa-eye password-toggle-icon"></i>
+          </div>
+          <span class="form-error">Must be at least 6 characters.</span>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="confirm-password" class="form-control" placeholder="••••••••" required>
+            <i class="fa-solid fa-eye password-toggle-icon"></i>
+          </div>
+          <span class="form-error">Passwords do not match.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 20px;">Create Account</button>
+      
+      <div style="text-align:center; font-size:0.9rem; color:rgba(255,255,255,0.6);">
+        Already have an account? <a href="login.html" style="color:var(--accent-orange); font-weight:700; text-decoration:none;">Login Here</a>
+      </div>
+    </form>
+  </div>
+
+  <script src="js/script.js?v=7.0"></script>
+</body>
+</html>

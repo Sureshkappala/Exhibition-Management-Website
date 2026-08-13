@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibition Details - Stackly Exhibition Platform</title>
+  <meta name="description" content="View session schedules, speakers, floor plans, and register for TechInnovate Global Expo.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-nav">
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+      </a>
+            <ul class="nav-links">
+        <!-- Mobile Drawer Header -->
+        <li class="drawer-header">
+          <img src="assets/images/logo.webp" alt="Stackly Logo">
+          <button type="button" class="drawer-close" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </button>
+        </li>
+        <!-- Mobile Search -->
+        <li class="drawer-search">
+          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="exhibitions.html" class="active">Exhibitions</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="exhibitors.html">Exhibitors</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+                <li class="nav-actions-mobile">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="registration.html" class="btn btn-primary">Register</a>
+        </li>
+        <!-- Mobile Contact Info -->
+        <li class="drawer-contact-info">
+          <h5>Contact Info</h5>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> support@stackly.org</p>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="registration.html" class="btn btn-primary">Register</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Details Hero Area -->
+  <header class="interior-banner" style="background: linear-gradient(rgba(10,15,29,0.8), rgba(10,15,29,0.9)), url('assets/images/hero.webp') no-repeat center center/cover; padding: 180px 20px 120px 20px;">
+    <div class="container">
+      <span class="hero-tag" style="background-color: var(--accent-gold); color: var(--primary-dark); font-weight:700;">Featured Event</span>
+      <h1 style="margin-top: 15px;">TechInnovate Global Expo 2026</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> / <a href="exhibitions.html">Exhibitions</a> / <span>TechInnovate Global Expo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Detail Content Section -->
+  <section class="bg-white">
+    <div class="container details-grid">
+      
+      <!-- Left Main Panel -->
+      <div class="details-content">
+        <img src="assets/images/tech_expo.webp" alt="Tech Innovations Display Booth" style="border-radius: var(--border-radius-md); box-shadow: var(--shadow-md); margin-bottom: 40px; width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+        
+        <h2>About the Exhibition</h2>
+        <p style="color:var(--text-muted); margin-bottom: 20px;">TechInnovate Global Expo stands as the premier technology summit of the year. Bringing together software architects, electronics manufacturers, tech researchers, and innovators, the event offers a platform to showcase smart systems, automation, AI bots, and cybersecurity tools.</p>
+        <p style="color:var(--text-muted); margin-bottom: 30px;">Across three dynamic days, visitors can explore interactive display booths, attend panel discussions led by industry experts, and network with key decision-makers during VIP roundtable sessions.</p>
+        
+        <h2>Event Highlights</h2>
+        <ul class="highlights-list">
+          <li><i class="fa-solid fa-circle-check"></i> 500+ International Exhibitors</li>
+          <li><i class="fa-solid fa-circle-check"></i> 30+ Dedicated Speaker Sessions</li>
+          <li><i class="fa-solid fa-circle-check"></i> Interactive VR & AI Demonstration Zones</li>
+          <li><i class="fa-solid fa-circle-check"></i> One-on-One Business Matching Dinners</li>
+          <li><i class="fa-solid fa-circle-check"></i> EV Concept Cars & Hydrogen Systems</li>
+          <li><i class="fa-solid fa-circle-check"></i> Cybersecurity Hackathon Pitches</li>
+        </ul>
+
+        <h2>Exhibition Schedule</h2>
+        <div class="schedule-timeline">
+          <div class="schedule-slot">
+            <div class="schedule-time">
+              <span>Day 01</span>
+              <small>Oct 14, 2026</small>
+            </div>
+            <div class="schedule-info">
+              <h4>09:00 AM - Opening & Keynote Session</h4>
+              <p>Welcome address by organizers followed by keynote speeches from lead tech executives on generative AI frameworks.</p>
+            </div>
+          </div>
+          <div class="schedule-slot">
+            <div class="schedule-time">
+              <span>Day 02</span>
+              <small>Oct 15, 2026</small>
+            </div>
+            <div class="schedule-info">
+              <h4>11:00 AM - Robotics & IoT Panel</h4>
+              <p>A roundtable panel discussing robotics automation in manufacturing lines and smart home telemetry hubs.</p>
+            </div>
+          </div>
+          <div class="schedule-slot">
+            <div class="schedule-time">
+              <span>Day 03</span>
+              <small>Oct 16, 2026</small>
+            </div>
+            <div class="schedule-info">
+              <h4>03:00 PM - Closing Ceremony & Awards</h4>
+              <p>Recognizing the most innovative exhibitors, best startup booth design, and closing networking cocktails.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Featured Speakers</h2>
+        <div class="grid-2" style="gap:20px; margin-bottom: 40px;">
+          <div class="speaker-card" style="display:flex; align-items:center; gap:20px; padding:20px;">
+            <img src="assets/images/speaker1.webp" alt="Dr. Adrian Vance" style="width:90px; height:90px; border-radius:50%; object-fit:cover;">
+            <div>
+              <h4 style="font-size:1.15rem; margin-bottom:4px;">Dr. Adrian Vance</h4>
+              <p style="font-size:0.85rem; color:var(--accent-orange); font-weight:600; margin-bottom:5px;">AI Ethics Lead, CyberSec</p>
+              <p style="font-size:0.8rem; color:var(--text-muted);">Topic: Ethical Foundations in Business Automation</p>
+            </div>
+          </div>
+          <div class="speaker-card" style="display:flex; align-items:center; gap:20px; padding:20px;">
+            <img src="assets/images/speaker4.webp" alt="Dr. Clara Finch" style="width:90px; height:90px; border-radius:50%; object-fit:cover;">
+            <div>
+              <h4 style="font-size:1.15rem; margin-bottom:4px;">Dr. Clara Finch</h4>
+              <p style="font-size:0.85rem; color:var(--accent-orange); font-weight:600; margin-bottom:5px;">Director of Robotics, BioTech</p>
+              <p style="font-size:0.8rem; color:var(--text-muted);">Topic: Surgical Robotics and Automation</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Venue & Floor Information</h2>
+        <p style="color:var(--text-muted); margin-bottom: 20px;">The exhibition is hosted at the premium New York Central Hall, occupying Wings A & B. Shuttle buses run from Manhattan Terminal every 15 minutes.</p>
+        <div class="map-container" style="height: 300px; margin-top: 0;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25279998188!2d-74.1197637830578!3d40.69767006347318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1684348239401!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Right Sidebar Panel -->
+      <div>
+        <div class="sidebar-card">
+          <h3>Exhibition Details</h3>
+          <ul class="info-list">
+            <li>
+              <span>Date</span>
+              <span>Oct 14-16, 2026</span>
+            </li>
+            <li>
+              <span>Timing</span>
+              <span>09:00 AM - 06:00 PM</span>
+            </li>
+            <li>
+              <span>Location</span>
+              <span>Central Hall, NY</span>
+            </li>
+            <li>
+              <span>Organizer</span>
+              <span>Tech Innovate Corp.</span>
+            </li>
+            <li>
+              <span>Entry Fee</span>
+              <span style="color:var(--accent-orange); font-weight:700;">Free / Register Online</span>
+            </li>
+          </ul>
+          <div style="margin-top: 25px;">
+            <a href="registration.html" class="btn btn-primary" style="width: 100%;">Register Now</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Contact Organizer</h3>
+          <form style="display:flex; flex-direction:column; gap:15px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <textarea class="form-control" rows="4" placeholder="Your Message" required style="resize:none;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark" style="width:100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+          </div>
+          <p class="footer-desc">Mobilizing rapid exhibition coordinating systems, visitor matchmaking resources, live booth mapping grids, and custom corporate expos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="exhibitions.html">Exhibitions</a></li>
+            <li><a href="events.html">Events Schedule</a></li>
+            <li><a href="exhibitors.html">Exhibitors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Coordinates</a></li>
+            <li><a href="about.html#faq">FAQ & Agreements</a></li>
+            <li><a href="admin-dashboard.html">System Portals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p class="footer-desc" style="margin-bottom: 15px;">Get quarterly emergency updates, newly booked expos, and registered visitors trends reports.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!'); this.reset();">
+            <input type="email" class="footer-newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved. Designed for professional exhibition management.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="about.html#faq">Security Audits</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js?v=7.0"></script>
+</body>
+</html>

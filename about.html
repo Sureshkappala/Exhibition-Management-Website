@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Stackly Exhibition Platform</title>
+  <meta name="description" content="Discover our mission, vision, event achievements, and how Stackly coordinates world-class exhibitions.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-nav">
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+      </a>
+            <ul class="nav-links">
+        <!-- Mobile Drawer Header -->
+        <li class="drawer-header">
+          <img src="assets/images/logo.webp" alt="Stackly Logo">
+          <button type="button" class="drawer-close" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </button>
+        </li>
+        <!-- Mobile Search -->
+        <li class="drawer-search">
+          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="exhibitions.html">Exhibitions</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="exhibitors.html">Exhibitors</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+                <li class="nav-actions-mobile">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="registration.html" class="btn btn-primary">Register</a>
+        </li>
+        <!-- Mobile Contact Info -->
+        <li class="drawer-contact-info">
+          <h5>Contact Info</h5>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> support@stackly.org</p>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="registration.html" class="btn btn-primary">Register</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Interior Banner -->
+  <header class="interior-banner">
+    <div class="container">
+      <h1>About Stackly</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> / <span>About Us</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: About Us -->
+  <section class="bg-white">
+    <div class="container about-split">
+      <div>
+        <span class="hero-tag" style="background-color:rgba(18,26,46,0.05); color:var(--primary-dark); border-color:rgba(18,26,46,0.1)">Who We Are</span>
+        <h2 style="font-size: 2.2rem; margin: 15px 0 25px 0;">Bridging the Gap Between Industry Leaders and Innovators</h2>
+        <p style="color:var(--text-muted); margin-bottom: 20px;">Stackly was founded with a single purpose: to build a modern, high-performance web platform that makes exhibition management, visitor ticketing, and booth reservations effortless. We connect businesses with active audiences and trade partners worldwide.</p>
+        <p style="color:var(--text-muted); margin-bottom: 30px;">Whether you are looking to showcase your latest technologies, attend thought-provoking seminars, or expand your corporate networking footprints, Stackly provides the infrastructure and support to facilitate your growth.</p>
+        <a href="registration.html" class="btn btn-primary">Join Us Today</a>
+      </div>
+      <div class="about-image-container">
+        <img src="assets/images/visitor_exp.webp" alt="Exhibition networking area" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Mission & Vision -->
+  <section class="bg-light">
+    <div class="container vision-mission-grid">
+      <div class="vm-card">
+        <h2>Our Mission</h2>
+        <p style="color: var(--text-muted);">To foster innovation and corporate partnerships by providing a smooth, digitized space where visitors can discover groundbreaking products, and exhibitors can host high-return displays, seminars, and networking sessions.</p>
+      </div>
+      <div class="vm-card accent-orange">
+        <h2>Our Vision</h2>
+        <p style="color: var(--text-muted);">To establish Stackly as the leading global digital standard for trade show management, creating interconnected networks across technology, automotive, healthcare, fashion, and business conferences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Why Choose Us -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose Us</h2>
+        <p style="color: var(--text-muted);">We bring tools and features designed to deliver maximum value to everyone involved in the exhibition ecosystem.</p>
+      </div>
+      <div class="grid-3">
+        <!-- Reason 1 -->
+        <div style="padding: 30px; background-color:var(--bg-light); border-radius:var(--border-radius-md);">
+          <i class="fa-solid fa-calendar-check fa-2x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+          <h3>Professional Management</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Our backend automation handles all reservation receipts, schedules, floor map updates, and contact rosters instantly.</p>
+        </div>
+        <!-- Reason 2 -->
+        <div style="padding: 30px; background-color:var(--bg-light); border-radius:var(--border-radius-md);">
+          <i class="fa-solid fa-address-card fa-2x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+          <h3>Easy Registration</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Visitors and exhibitors can register and generate secure digital passes/tickets in under two minutes.</p>
+        </div>
+        <!-- Reason 3 -->
+        <div style="padding: 30px; background-color:var(--bg-light); border-radius:var(--border-radius-md);">
+          <i class="fa-solid fa-network-wired fa-2x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+          <h3>Industry Networking</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Attend dedicated corporate lunches, networking roundtables, and VIP cocktail programs at every expo.</p>
+        </div>
+        <!-- Reason 4 -->
+        <div style="padding: 30px; background-color:var(--bg-light); border-radius:var(--border-radius-md);">
+          <i class="fa-solid fa-circle-info fa-2x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+          <h3>Reliable Information</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Real-time floor scheduling, speaker listings, time slot shifts, and venue maps kept fully updated.</p>
+        </div>
+        <!-- Reason 5 -->
+        <div style="padding: 30px; background-color:var(--bg-light); border-radius:var(--border-radius-md);">
+          <i class="fa-solid fa-headset fa-2x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+          <h3>Exhibitor Support</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Dedicated venue assistants, booth power supply setups, and logistics handling coordinate your displays.</p>
+        </div>
+        <!-- Reason 6 -->
+        <div style="padding: 30px; background-color:var(--bg-light); border-radius:var(--border-radius-md);">
+          <i class="fa-solid fa-heart fa-2x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+          <h3>Visitor Experience</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Interactive digital booklets, product lists, and map guidance files emailed to all visitors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Achievements & Milestones -->
+  <section class="bg-dark-sec">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color: var(--white);">Our Achievements</h2>
+        <p style="color: var(--text-light); opacity: 0.8;">Recognized milestones reflecting our growth and global impact.</p>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <h3 data-target="15">0</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; text-transform: uppercase;">Years Experience</p>
+        </div>
+        <div class="achievement-card">
+          <h3 data-target="450">0</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; text-transform: uppercase;">Expos Managed</p>
+        </div>
+        <div class="achievement-card">
+          <h3 data-target="99">0</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; text-transform: uppercase;">Partner Satisfaction %</p>
+        </div>
+        <div class="achievement-card">
+          <h3 data-target="28">0</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; text-transform: uppercase;">Global Offices</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Interactive FAQ Accordion -->
+  <section id="faq" class="bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find quick answers to common queries regarding registrations, booths, schedules, and speakers.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I register for an exhibition?
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You can click on any "Register" or "Join Event" button which will direct you to our Registration Portal. Select the "Visitor" tab, fill out your company role, selected city, and basic contact details to generate your entry pass.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I become an exhibitor?
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>To register as an exhibitor, toggle the "Exhibitor Registration" tab on our registration page. Enter your company profile, booth space requirements (e.g., size), and team sizes. Our support representatives will reach out within 24 hours to confirm floor coordinates.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How do I book a specific booth number?
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Once registered and approved as an exhibitor, you can access your User Dashboard. Navigate to "Booth Booking" to view a real-time floor map showing available (Green), reserved (Yellow), and occupied (Red) stalls, and select your preferred coordinates.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Can I register as a visitor for free?
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>General entry visitor passes are free of charge if registered online before early-bird deadlines. VIP passes which include premium networking lunches and conference keynote seating require payment vouchers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I become a speaker?
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Please contact our team directly through the Contact page form, selecting "Speaker Proposal" as the subject. Attach your portfolio, summary of research topic, and previous panel recordings for review.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Where can I find detailed event schedules?
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>The "Events" page displays dates, room numbers, topics, and speaker details for all upcoming workshops, summits, panels, and product launch sessions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+          </div>
+          <p class="footer-desc">Mobilizing rapid exhibition coordinating systems, visitor matchmaking resources, live booth mapping grids, and custom corporate expos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="exhibitions.html">Exhibitions</a></li>
+            <li><a href="events.html">Events Schedule</a></li>
+            <li><a href="exhibitors.html">Exhibitors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Coordinates</a></li>
+            <li><a href="about.html#faq">FAQ & Agreements</a></li>
+            <li><a href="admin-dashboard.html">System Portals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p class="footer-desc" style="margin-bottom: 15px;">Get quarterly emergency updates, newly booked expos, and registered visitors trends reports.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!'); this.reset();">
+            <input type="email" class="footer-newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved. Designed for professional exhibition management.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="about.html#faq">Security Audits</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js?v=7.0"></script>
+</body>
+</html>

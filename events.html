@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Schedule - Stackly Exhibition Platform</title>
+  <meta name="description" content="Explore keynotes, panel debates, and interactive tech workshops at Stackly events.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Day selector tabs */
+    .schedule-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    
+    .schedule-tab-btn {
+      padding: 14px 28px;
+      border-radius: var(--border-radius-sm);
+      background-color: var(--bg-card-light);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      color: var(--primary-dark);
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+    }
+    
+    .schedule-tab-btn.active,
+    .schedule-tab-btn:hover {
+      background-color: var(--primary-dark);
+      color: var(--white);
+      border-color: var(--primary-dark);
+    }
+    
+    .event-schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .event-item-card {
+      background-color: var(--bg-card-light);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--accent-green) !important;
+      display: grid;
+      grid-template-columns: 180px 1fr 150px;
+      align-items: center;
+      padding: 24px;
+      gap: 30px;
+      transition: var(--transition-smooth);
+      outline: none !important;
+    }
+    
+    .event-item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+      border-color: var(--accent-gold) !important;
+    }
+    
+    .event-time-badge {
+      text-align: center;
+      border-right: 2px solid rgba(15, 23, 42, 0.05);
+      padding-right: 20px;
+    }
+    
+    .event-time-badge h4 {
+      font-size: 1.4rem;
+      color: var(--accent-orange);
+      font-weight: 800;
+    }
+    
+    .event-time-badge span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .event-item-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .event-type-tag {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    
+    .tag-keynote { background-color: rgba(255, 184, 0, 0.1); color: var(--accent-gold); }
+    .tag-panel { background-color: rgba(255, 107, 53, 0.1); color: var(--accent-orange); }
+    .tag-workshop { background-color: rgba(0, 180, 216, 0.1); color: #00b4d8; }
+    .tag-launch { background-color: rgba(16, 185, 129, 0.1); color: var(--status-available); }
+    
+    .event-speaker-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    
+    .event-speaker-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .event-speaker-meta span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    
+    .event-speaker-meta small {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    @media (max-width: 768px) {
+      .event-item-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .event-time-badge {
+        border-right: none;
+        border-bottom: 2px solid rgba(15, 23, 42, 0.05);
+        padding-right: 0;
+        padding-bottom: 15px;
+      }
+      
+      .event-type-tag {
+        align-self: center;
+      }
+      
+      .event-speaker-meta {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body class="dark-nav">
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+      </a>
+            <ul class="nav-links">
+        <!-- Mobile Drawer Header -->
+        <li class="drawer-header">
+          <img src="assets/images/logo.webp" alt="Stackly Logo">
+          <button type="button" class="drawer-close" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </button>
+        </li>
+        <!-- Mobile Search -->
+        <li class="drawer-search">
+          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="exhibitions.html">Exhibitions</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="exhibitors.html">Exhibitors</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+                <li class="nav-actions-mobile">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="registration.html" class="btn btn-primary">Register</a>
+        </li>
+        <!-- Mobile Contact Info -->
+        <li class="drawer-contact-info">
+          <h5>Contact Info</h5>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> support@stackly.org</p>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="registration.html" class="btn btn-primary">Register</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Interior Banner -->
+  <header class="interior-banner">
+    <div class="container">
+      <h1>Event Schedule</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> / <span>Events Schedule</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Schedule Panel -->
+  <section class="bg-light">
+    <div class="container">
+      
+      <!-- Day Tabs Selector -->
+      <div class="schedule-tabs">
+        <button class="schedule-tab-btn active" data-day="day1">Day 01 - Oct 14</button>
+        <button class="schedule-tab-btn" data-day="day2">Day 02 - Oct 15</button>
+        <button class="schedule-tab-btn" data-day="day3">Day 03 - Oct 16</button>
+      </div>
+
+      <!-- Schedule Panels -->
+      <!-- Day 1 Panel -->
+      <div id="day1" class="schedule-day-panel event-schedule-list">
+        <!-- Event 1 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>09:00 AM</h4>
+            <span>Oct 14, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-keynote">Conferences & Keynote</span>
+            <h3>Next-Gen AI Frameworks for Business Scalability</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker1.webp" alt="Dr. Adrian Vance" class="event-speaker-avatar">
+              <span>Dr. Adrian Vance <small>(AI Ethics Lead, CyberSec)</small></span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Hall A - Room 102</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>11:30 AM</h4>
+            <span>Oct 14, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-workshop">Seminars & Workshops</span>
+            <h3>Building Smart IoT Devices with Edge Node Computing</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker4.webp" alt="Dr. Clara Finch" class="event-speaker-avatar">
+              <span>Dr. Clara Finch <small>(Director of Robotics, BioTech)</small></span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Hall B - Lab Zone</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>02:30 PM</h4>
+            <span>Oct 14, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-launch">Product Launches</span>
+            <h3>Unveiling the Nexis Core Quantum Database V1</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker3.webp" alt="Marcus Sterling" class="event-speaker-avatar">
+              <span>Marcus Sterling <small>(Chief Economist, Apex Fund)</small></span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Exhibition Stage A</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 Panel (Hidden initially) -->
+      <div id="day2" class="schedule-day-panel event-schedule-list" style="display:none;">
+        <!-- Event 4 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>10:00 AM</h4>
+            <span>Oct 15, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-panel">Panel Discussions</span>
+            <h3>EV Solid-State Batteries: Future or Hype?</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker2.webp" alt="Elena Rostova" class="event-speaker-avatar">
+              <span>Elena Rostova <small>(VP of Product, EV Motors)</small></span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Hall C - Conference Room</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>01:30 PM</h4>
+            <span>Oct 15, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-workshop">Seminars & Workshops</span>
+            <h3>Automating Surgery: Robotics in Modern Medical Theatres</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker4.webp" alt="Dr. Clara Finch" class="event-speaker-avatar">
+              <span>Dr. Clara Finch <small>(Director of Robotics, BioTech)</small></span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Hall B - Lab Zone</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 Panel (Hidden initially) -->
+      <div id="day3" class="schedule-day-panel event-schedule-list" style="display:none;">
+        <!-- Event 6 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>11:00 AM</h4>
+            <span>Oct 16, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-panel">Panel Discussions</span>
+            <h3>Venture Funding Shifts in a High-Rate Market</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker3.webp" alt="Marcus Sterling" class="event-speaker-avatar">
+              <span>Marcus Sterling <small>(Chief Economist, Apex Fund)</small></span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Hall A - Keynote Auditorium</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+
+        <!-- Event 7 -->
+        <div class="event-item-card">
+          <div class="event-time-badge">
+            <h4>04:00 PM</h4>
+            <span>Oct 16, 2026</span>
+          </div>
+          <div class="event-item-details">
+            <span class="event-type-tag tag-keynote">Networking Events</span>
+            <h3>Closing Cocktail Dinner & Corporate Matchmaking</h3>
+            <div class="event-speaker-meta">
+              <img src="assets/images/speaker1.webp" alt="Dr. Adrian Vance" class="event-speaker-avatar">
+              <span>All Speakers & Organizers</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Central Hall - Roof Terrace</p>
+          </div>
+          <div>
+            <a href="registration.html" class="btn btn-primary" style="width:100%; padding:10px 15px;">Register</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+          </div>
+          <p class="footer-desc">Mobilizing rapid exhibition coordinating systems, visitor matchmaking resources, live booth mapping grids, and custom corporate expos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="exhibitions.html">Exhibitions</a></li>
+            <li><a href="events.html">Events Schedule</a></li>
+            <li><a href="exhibitors.html">Exhibitors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Coordinates</a></li>
+            <li><a href="about.html#faq">FAQ & Agreements</a></li>
+            <li><a href="admin-dashboard.html">System Portals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p class="footer-desc" style="margin-bottom: 15px;">Get quarterly emergency updates, newly booked expos, and registered visitors trends reports.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!'); this.reset();">
+            <input type="email" class="footer-newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved. Designed for professional exhibition management.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="about.html#faq">Security Audits</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js?v=7.0"></script>
+  <script>
+    // Tab switching for day panels
+    const tabButtons = document.querySelectorAll('.schedule-tab-btn');
+    const dayPanels = document.querySelectorAll('.schedule-day-panel');
+    
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Show panel
+        const targetDay = btn.getAttribute('data-day');
+        dayPanels.forEach(panel => {
+          if (panel.id === targetDay) {
+            panel.style.display = 'flex';
+          } else {
+            panel.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

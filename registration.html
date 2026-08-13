@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Registration - Stackly Exhibition Platform</title>
+  <meta name="description" content="Register as a visitor or apply as an exhibitor for upcoming global exhibitions.">
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-nav">
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-container">
+        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+      </a>
+            <ul class="nav-links">
+        <!-- Mobile Drawer Header -->
+        <li class="drawer-header">
+          <img src="assets/images/logo.webp" alt="Stackly Logo">
+          <button type="button" class="drawer-close" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark fa-xl"></i>
+          </button>
+        </li>
+        <!-- Mobile Search -->
+        <li class="drawer-search">
+          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="exhibitions.html">Exhibitions</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="exhibitors.html">Exhibitors</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+                <li class="nav-actions-mobile">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="registration.html" class="btn btn-primary">Register</a>
+        </li>
+        <!-- Mobile Contact Info -->
+        <li class="drawer-contact-info">
+          <h5>Contact Info</h5>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</p>
+          <p><i class="fa-solid fa-envelope"></i> support@stackly.org</p>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="registration.html" class="btn btn-primary">Register</a>
+      </div>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Interior Banner -->
+  <header class="interior-banner">
+    <div class="container">
+      <h1>Event Registration</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> / <span>Registration</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Registration Form Section -->
+  <section class="bg-light">
+    <div class="container">
+      <div class="form-card">
+        
+        <!-- Tabs -->
+        <div class="form-tabs">
+          <div id="tab-visitor" class="form-tab active">Visitor Registration</div>
+          <div id="tab-exhibitor" class="form-tab">Exhibitor Space Application</div>
+        </div>
+
+        <!-- Master Form -->
+        <form id="registration-form" novalidate>
+          
+          <!-- Visitor Group Fields -->
+          <div id="form-visitor-group">
+            <div class="form-group">
+              <label for="visitor-name">Full Name</label>
+              <input type="text" id="visitor-name" name="visitor_name" class="form-control" placeholder="Enter your full name" required>
+              <span class="form-error">Please enter letters and spaces only.</span>
+            </div>
+            
+            <div class="form-group">
+              <label for="visitor-email">Email Address</label>
+              <input type="email" id="visitor-email" name="visitor_email" class="form-control" placeholder="example@domain.com" required>
+              <span class="form-error">Please enter a valid email address.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="visitor-phone">Mobile Number</label>
+              <input type="tel" id="visitor-phone" name="visitor_phone" class="form-control" placeholder="Enter 10-12 digit phone number" required>
+              <span class="form-error">Numbers only. Must be between 10 to 12 digits.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="visitor-company">Company / Organization</label>
+                <input type="text" id="visitor-company" name="visitor_company" class="form-control" placeholder="Your company name" required>
+                <span class="form-error">Invalid company name format.</span>
+              </div>
+              <div class="form-group">
+                <label for="visitor-role">Job Title / Role</label>
+                <input type="text" id="visitor-role" name="visitor_role" class="form-control" placeholder="e.g. Senior Architect" required>
+                <span class="form-error">This field is required.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="visitor-expo">Select Exhibition</label>
+                <select id="visitor-expo" name="visitor_expo" class="form-control" required>
+                  <option value="">-- Choose Exhibition --</option>
+                  <option value="tech">TechInnovate Global Expo 2026</option>
+                  <option value="business">Global Business Summit 2026</option>
+                  <option value="art">Contemporary Art & Canvas 2026</option>
+                  <option value="auto">NextGen Auto Show 2026</option>
+                </select>
+                <span class="form-error">Please select an exhibition.</span>
+              </div>
+              <div class="form-group">
+                <label for="visitor-city">Your City</label>
+                <input type="text" id="visitor-city" name="visitor_city" class="form-control" placeholder="e.g. New York" required>
+                <span class="form-error">Letters and spaces only.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exhibitor Group Fields (Hidden by default in CSS, toggled by JS) -->
+          <div id="form-exhibitor-group" style="display: none;">
+            <div class="form-group">
+              <label for="exhibitor-company">Company Name</label>
+              <input type="text" id="exhibitor-company" name="exhibitor_company" class="form-control" placeholder="Registered business name">
+              <span class="form-error">Invalid company name format.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="exhibitor-name">Contact Person (Full Name)</label>
+              <input type="text" id="exhibitor-name" name="exhibitor_name" class="form-control" placeholder="Full name of representative">
+              <span class="form-error">Please enter letters and spaces only.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exhibitor-email">Business Email</label>
+                <input type="email" id="exhibitor-email" name="exhibitor_email" class="form-control" placeholder="corporate@company.com">
+                <span class="form-error">Please enter a valid email address.</span>
+              </div>
+              <div class="form-group">
+                <label for="exhibitor-phone">Mobile / Tel</label>
+                <input type="tel" id="exhibitor-phone" name="exhibitor_phone" class="form-control" placeholder="10-12 digit phone number">
+                <span class="form-error">Numbers only. Must be between 10 to 12 digits.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="exhibitor-industry">Industry Segment</label>
+                <select id="exhibitor-industry" name="exhibitor_industry" class="form-control">
+                  <option value="">-- Select Industry --</option>
+                  <option value="software">Software & IT</option>
+                  <option value="automotive">Automotive</option>
+                  <option value="healthcare">Healthcare & Medicine</option>
+                  <option value="finance">Finance & Capital</option>
+                  <option value="art">Fine Arts & Design</option>
+                  <option value="industrial">Heavy Machinery & Power</option>
+                </select>
+                <span class="form-error">Please select your industry.</span>
+              </div>
+              <div class="form-group">
+                <label for="exhibitor-expo">Target Exhibition</label>
+                <select id="exhibitor-expo" name="exhibitor_expo" class="form-control">
+                  <option value="">-- Choose Exhibition --</option>
+                  <option value="tech">TechInnovate Global Expo 2026</option>
+                  <option value="business">Global Business Summit 2026</option>
+                  <option value="art">Contemporary Art & Canvas 2026</option>
+                  <option value="auto">NextGen Auto Show 2026</option>
+                </select>
+                <span class="form-error">Please select an exhibition.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exhibitor-booth">Booth Stall Requirement</label>
+              <select id="exhibitor-booth" name="exhibitor_booth" class="form-control">
+                <option value="">-- Select Booth Configuration --</option>
+                <option value="standard">Standard Stall (3m x 3m)</option>
+                <option value="premium">Premium Corner Stall (3m x 6m)</option>
+                <option value="island">Island Pavilion (6m x 6m)</option>
+              </select>
+              <span class="form-error">Please select a booth requirement.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="exhibitor-desc">Company Description & Display Pitch</label>
+              <textarea id="exhibitor-desc" name="exhibitor_desc" class="form-control" rows="5" placeholder="Briefly describe what your company will display at the booth"></textarea>
+              <span class="form-error">This field is required.</span>
+            </div>
+          </div>
+
+          <div class="form-checkbox-group" style="margin-bottom: 30px;">
+            <input type="checkbox" id="terms-agree" required>
+            <label for="terms-agree">I agree to the Stackly Event <a href="404.html" style="color:var(--accent-orange); font-weight:600;">Terms & Conditions</a>.</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Registration</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
+          </div>
+          <p class="footer-desc">Mobilizing rapid exhibition coordinating systems, visitor matchmaking resources, live booth mapping grids, and custom corporate expos.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="exhibitions.html">Exhibitions</a></li>
+            <li><a href="events.html">Events Schedule</a></li>
+            <li><a href="exhibitors.html">Exhibitors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Coordinates</a></li>
+            <li><a href="about.html#faq">FAQ & Agreements</a></li>
+            <li><a href="admin-dashboard.html">System Portals</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <p class="footer-desc" style="margin-bottom: 15px;">Get quarterly emergency updates, newly booked expos, and registered visitors trends reports.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!'); this.reset();">
+            <input type="email" class="footer-newsletter-input" placeholder="Your Email" required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly. All rights reserved. Designed for professional exhibition management.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="about.html#faq">Security Audits</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js?v=7.0"></script>
+  <script>
+    // Handle tab-based queries if coming with ?tab=exhibitor
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam = urlParams.get('tab');
+    if (tabParam === 'exhibitor') {
+      const exhibTab = document.getElementById('tab-exhibitor');
+      if (exhibTab) exhibTab.click();
+    }
+  </script>
+</body>
+</html>
