@@ -3038,8 +3038,8 @@ section {
 
 /* 18. FOOTER SECTION */
 .footer {
-    background-color: var(--color-primary);
-    color: var(--color-bg-white);
+    background-color: var(--primary-dark) !important;
+    color: var(--text-light) !important;
     padding: 80px 0 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
