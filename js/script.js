@@ -50,6 +50,7 @@ function initNavbar() {
         hamburger.classList.add('active');
         navLinks.classList.add('active');
         overlay.classList.add('active');
+        document.documentElement.classList.add('no-scroll');
         document.body.classList.add('no-scroll');
         lastOpenTime = Date.now();
       } else {
@@ -62,11 +63,17 @@ function initNavbar() {
       hamburger.classList.remove('active');
       navLinks.classList.remove('active');
       overlay.classList.remove('active');
+      document.documentElement.classList.remove('no-scroll');
       document.body.classList.remove('no-scroll');
     };
 
     // Close menu when clicking overlay
     overlay.addEventListener('click', closeMenu);
+    
+    // Prevent touch events from leaking to the background page on mobile
+    overlay.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
 
     // Close menu when clicking close button inside drawer
     document.addEventListener('click', (e) => {

@@ -4623,7 +4623,11 @@ input::-ms-clear {
 }
 
 
-/* Freeze page scroll when mobile navigation drawer is active */
+/* Freeze page scroll when mobile navigation drawer is active (Safari / iOS compatible) */
+html.no-scroll,
 body.no-scroll {
   overflow: hidden !important;
+  height: 100vh !important;
+  position: fixed !important;
+  width: 100% !important;
 }
