@@ -2359,11 +2359,49 @@ section {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 20px 0;
+    padding: 10px 0 !important;
   }
   
   .dashboard-sidebar-header {
     display: none;
+  }
+  
+  .dashboard-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 10px !important;
+  }
+
+  .dashboard-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-menu-item {
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+
+  .dashboard-menu-item a,
+  .dashboard-menu-item button {
+    padding: 12px 20px !important;
+    font-size: 0.85rem !important;
+    border-left: none !important;
+    border-bottom: 3px solid transparent !important;
+    padding-left: 20px !important;
+  }
+
+  .dashboard-menu-item.active a,
+  .dashboard-menu-item.active button,
+  .dashboard-menu-item a:hover,
+  .dashboard-menu-item button:hover {
+    border-bottom: 3px solid var(--accent-gold) !important;
+    border-left: none !important;
+    padding-left: 20px !important;
+    background-color: transparent !important;
+    color: var(--accent-gold) !important;
   }
   
   .dashboard-main {
