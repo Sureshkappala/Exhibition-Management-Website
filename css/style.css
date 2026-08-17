@@ -4828,3 +4828,11 @@ body.no-scroll {
     gap: 30px;
   }
 }
+
+
+/* Modular Spotlight Cards Hover Effects */
+.module-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--accent-orange) !important;
+}
