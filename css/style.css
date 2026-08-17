@@ -4671,7 +4671,7 @@ body.no-scroll {
 .chart-container {
   background: var(--bg-card-light);
   border-radius: var(--border-radius-md);
-  padding: 30px;
+  padding: 30px 30px 38px 30px;
   border: 1px solid rgba(15, 23, 42, 0.06);
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -4785,13 +4785,13 @@ body.no-scroll {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .ring-svg-wrapper {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 
 .ring-circle-bg {
