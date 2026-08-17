@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFiltering();
   initFormValidation();
   initDashboards();
+  initCharts();
 });
 
 /* ==========================================================================
@@ -621,4 +622,38 @@ function initDashboards() {
       }
     });
   }
+}
+
+
+/* ==========================================================================
+   CHARTS & METRICS ANIMATIONS
+   ========================================================================== */
+function initCharts() {
+  setTimeout(() => {
+    // 1. Horizontal Progress Bars
+    document.querySelectorAll('.progress-bar-fill').forEach(fill => {
+      const widthVal = fill.getAttribute('data-width');
+      if (widthVal) {
+        fill.style.width = widthVal;
+      }
+    });
+
+    // 2. Vertical Column Bar Charts
+    document.querySelectorAll('.bar-chart-pill').forEach(pill => {
+      const heightVal = pill.getAttribute('data-height');
+      if (heightVal) {
+        pill.style.height = heightVal;
+      }
+    });
+
+    // 3. Circular SVG Progress Rings
+    document.querySelectorAll('.ring-circle-fill').forEach(ring => {
+      const percentVal = ring.getAttribute('data-percent');
+      if (percentVal) {
+        const circumference = 226; 
+        const offset = circumference - (percentVal / 100) * circumference;
+        ring.style.strokeDashoffset = offset;
+      }
+    });
+  }, 400);
 }
