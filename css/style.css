@@ -4621,3 +4621,9 @@ input::-ms-clear {
         line-height: 1.5 !important;
     }
 }
+
+
+/* Freeze page scroll when mobile navigation drawer is active */
+body.no-scroll {
+  overflow: hidden !important;
+}

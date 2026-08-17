@@ -50,6 +50,7 @@ function initNavbar() {
         hamburger.classList.add('active');
         navLinks.classList.add('active');
         overlay.classList.add('active');
+        document.body.classList.add('no-scroll');
         lastOpenTime = Date.now();
       } else {
         closeMenu();
@@ -61,6 +62,7 @@ function initNavbar() {
       hamburger.classList.remove('active');
       navLinks.classList.remove('active');
       overlay.classList.remove('active');
+      document.body.classList.remove('no-scroll');
     };
 
     // Close menu when clicking overlay
