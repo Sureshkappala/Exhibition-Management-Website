@@ -2237,6 +2237,10 @@ section {
 }
 
 @media (max-width: 768px) {
+  .vision-mission-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 20px;
