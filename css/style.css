@@ -940,11 +940,11 @@ section {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 800;
-  color: var(--accent-gold);
+  color: var(--accent-orange);
   position: absolute;
   top: 15px;
   right: 25px;
-  opacity: 0.3;
+  opacity: 0.85;
 }
 
 .timeline-content h3 {
