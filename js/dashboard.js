@@ -552,7 +552,7 @@ function initUserProfile() {
     // 5. Update welcome banner title dynamically
     const bannerTitleEl = document.querySelector('.welcome-banner-title');
     if (bannerTitleEl) {
-        bannerTitleEl.textContent = `HELLO, ${userName.toUpperCase()}`;
+        bannerTitleEl.textContent = `HELLO, ${userEmail}`;
     }
 
     // 4. Custom Logout Button Behavior
