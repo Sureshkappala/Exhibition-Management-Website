@@ -358,6 +358,23 @@ function initFormValidation() {
   const setupForm = (form) => {
     if (!form) return;
 
+    // Filter characters on the fly (reject digits in names, reject letters in phones)
+    form.querySelectorAll('input').forEach(field => {
+      let type = 'text';
+      if (field.id?.includes('name') || field.name?.includes('name')) type = 'name';
+      else if (field.type === 'tel' || field.id?.includes('phone') || field.name?.includes('phone') || field.name?.includes('mobile')) type = 'phone';
+
+      if (type === 'name') {
+        field.addEventListener('input', () => {
+          field.value = field.value.replace(/[^A-Za-z\s]/g, '');
+        });
+      } else if (type === 'phone') {
+        field.addEventListener('input', () => {
+          field.value = field.value.replace(/[^0-9]/g, '');
+        });
+      }
+    });
+
     form.querySelectorAll('input, textarea, select').forEach(field => {
       // Blur check
       field.addEventListener('blur', () => {

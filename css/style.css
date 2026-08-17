@@ -4631,3 +4631,36 @@ body.no-scroll {
   position: fixed !important;
   width: 100% !important;
 }
+
+/* ==========================================================================
+   QA BUG FIX STYLE OVERRIDES
+   ========================================================================== */
+
+/* Dashboard Form Label Colors Contrast Adjustment */
+.dashboard-dark-layout label,
+.dashboard-dark-layout .form-label {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 600 !important;
+}
+
+.dashboard-dark-layout .form-group p,
+.dashboard-dark-layout .form-group span,
+.dashboard-dark-layout #role-help-desc {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* General invalid field border color highlight */
+.form-control.is-invalid {
+  border-color: var(--status-occupied) !important;
+  background-color: rgba(239, 68, 68, 0.05) !important;
+}
+
+/* Mobile Navigation Drawer Button Text Centering */
+@media (max-width: 768px) {
+  .nav-links .btn {
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
