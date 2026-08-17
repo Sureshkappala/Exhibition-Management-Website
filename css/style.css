@@ -3353,7 +3353,7 @@ section {
     
     /* Dark dashboard layout hamburger style override */
     .dashboard-dark-layout .hamburger {
-        background-color: #0c231a !important; /* Solid dark green background */
+        background-color: #121A2E !important; /* Solid dark green background */
         border-color: rgba(0, 230, 118, 0.2) !important;
     }
     
@@ -3885,12 +3885,12 @@ section {
 
 /* Contact Page Dark Form Card & Layout Styles */
 .contact-section-dark {
-    background-color: #06180f !important;
+    background-color: #0A0F1D !important;
     color: white !important;
 }
 
 .form-card-dark {
-    background-color: #0c231a !important;
+    background-color: #121A2E !important;
     border: 1px solid var(--color-secondary) !important;
     color: white !important;
     padding: 40px !important;
@@ -3977,21 +3977,21 @@ input::-ms-clear {
     --color-primary-light: #0d2a1d;
     --color-secondary: #00E676;
     --color-secondary-hover: #00c853;
-    --color-bg-light: #06180f;
-    --color-bg-white: #0c231a;
-    --color-bg-card: #0c231a;
+    --color-bg-light: #0A0F1D;
+    --color-bg-white: #121A2E;
+    --color-bg-card: #1E293B;
     --color-text-dark: #ffffff;
     --color-text-muted: rgba(255, 255, 255, 0.6);
     --color-border: rgba(0, 230, 118, 0.15);
     --color-success: #00E676;
 
-    background-color: #06180f !important;
+    background-color: #0A0F1D !important;
     color: white !important;
     min-height: 100vh !important;
 }
 
 .dashboard-dark-layout .sidebar {
-    background-color: #0c231a !important;
+    background-color: #121A2E !important;
     border-right: 1px solid rgba(0, 230, 118, 0.15) !important;
     display: flex !important;
     flex-direction: column !important;
@@ -4024,7 +4024,7 @@ input::-ms-clear {
 }
 
 .dashboard-dark-layout .dashboard-main {
-    background-color: #06180f !important;
+    background-color: #0A0F1D !important;
     color: white !important;
     padding: 40px !important;
 }
@@ -4035,7 +4035,7 @@ input::-ms-clear {
 .dashboard-dark-layout .recent-activity,
 .dashboard-dark-layout .quick-actions,
 .dashboard-dark-layout .profile-card {
-    background-color: #0c231a !important;
+    background-color: #121A2E !important;
     border: 1px solid rgba(0, 230, 118, 0.2) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
     border-radius: var(--radius-md) !important;
@@ -4166,7 +4166,7 @@ input::-ms-clear {
 
 .dashboard-dark-layout .svg-chart-point {
     fill: #00E676 !important;
-    stroke: #0c231a !important;
+    stroke: #121A2E !important;
 }
 
 .dashboard-dark-layout .svg-chart-grid,
@@ -4244,7 +4244,7 @@ input::-ms-clear {
         display: flex !important;
         align-items: center;
         gap: 15px;
-        background-color: #0c231a;
+        background-color: #121A2E;
         padding: 15px 20px;
         border-bottom: 1px solid rgba(0, 230, 118, 0.15);
         position: fixed !important;
@@ -4294,7 +4294,7 @@ input::-ms-clear {
         width: 280px !important;
         height: 100vh !important;
         z-index: 1010 !important;
-        background-color: #0c231a !important; /* Dark green drawer background */
+        background-color: #121A2E !important; /* Dark green drawer background */
         box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5) !important;
         transition: left 0.4s ease-in-out, visibility 0.4s ease-in-out !important;
         visibility: hidden !important;
