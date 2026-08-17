@@ -1,410 +1,821 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - Stackly Exhibition Platform</title>
-  <!-- Fonts & Styles -->
-  <link rel="stylesheet" href="css/style.css?v=7.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stackly Administrative Command Center dashboard.">
+    <title>Admin Dashboard | Stackly</title>
+    <link rel="stylesheet" href="css/style.css?v=7.0">
 </head>
-<body class="dark-nav">
+<body>
 
-  <!-- Sticky Navbar -->
-  <nav class="navbar scrolled">
-    <div class="container">
-      <a href="index.html" class="logo-container">
-        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 32px; display: block;">
-      </a>
-            <ul class="nav-links">
-        <!-- Mobile Drawer Header -->
-        <li class="drawer-header">
-          <img src="assets/images/logo.webp" alt="Stackly Logo">
-          <button type="button" class="drawer-close" aria-label="Close Menu">
-            <i class="fa-solid fa-xmark fa-xl"></i>
-          </button>
-        </li>
-        <!-- Mobile Search -->
-        <li class="drawer-search">
-          <input type="text" placeholder="Search resources..." onkeyup="if(event.key === 'Enter') { window.location.href='exhibitions.html?q=' + this.value; }">
-        </li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="exhibitions.html">Exhibitions</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Support</a></li>
-      </ul>
-      <div class="nav-actions">
-        <span style="color:var(--white); font-size:0.95rem; font-weight:600;"><i class="fa-regular fa-bell" style="margin-right:15px; cursor:pointer;"></i> Administrator Mode</span>
-        <a href="login.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem; border-color:rgba(255,255,255,0.2); color:var(--white);">Logout</a>
-      </div>
-    </div>
-  </nav>
+    <div class="dashboard-wrapper dashboard-dark-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand" style="margin-bottom: 24px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="admin-dashboard.html" class="logo" aria-label="Admin Dashboard" style="display: flex; align-items: center; text-decoration: none; gap: 8px;">
+                        <img src="assets/images/logo.webp" alt="Stackly Logo" style="height: 42px; width: auto; filter: invert(1);">
+                    </a>
+                    <button class="sidebar-close-btn" aria-label="Close Sidebar" style="background: none; border: none; color: rgba(255,255,255,0.7); cursor: pointer; display: none; align-items: center; justify-content: center; padding: 4px;">
+                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </button>
+                </div>
+                
+                <div class="sidebar-profile" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 24px;">
+                    <div style="position: relative; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid #00E676; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: var(--color-primary-light);">
+                        <img src="assets/images/story_hope.webp" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; background-color: #00E676; border: 2px solid #0c231a;"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; overflow: hidden;">
+                        <span style="font-size: 0.85rem; font-weight: 700; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">kappalasuresh92@gmail.com</span>
+                        <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">EOC Administrator</span>
+                    </div>
+                </div>
 
-  <!-- Dashboard Shell -->
-  <div class="dashboard-wrapper">
-    
-    <!-- Sidebar Menu -->
-    <aside class="dashboard-sidebar">
-      <div class="dashboard-sidebar-header">
-        <div class="sidebar-user">
-          <div class="sidebar-user-avatar" style="background:var(--accent-orange);">AD</div>
-          <div class="sidebar-user-info">
-            <h4>Admin Console</h4>
-            <p>Super Administrator</p>
-          </div>
-        </div>
-      </div>
-      
-      <ul class="dashboard-menu">
-        <li class="dashboard-menu-item active" data-target="overview">
-          <button><i class="fa-solid fa-gauge"></i> Overview Stats</button>
-        </li>
-        <li class="dashboard-menu-item" data-target="booths">
-          <button><i class="fa-solid fa-store"></i> Booth Stalls Map</button>
-        </li>
-        <li class="dashboard-menu-item" data-target="exhibitors">
-          <button><i class="fa-solid fa-industry"></i> Manage Exhibitors</button>
-        </li>
-        <li class="dashboard-menu-item" data-target="analytics">
-          <button><i class="fa-solid fa-chart-pie"></i> Analytics & Income</button>
-        </li>
-        <li class="dashboard-menu-item">
-          <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-        </li>
-      </ul>
-    </aside>
-
-    <!-- Main Content Panel -->
-    <main class="dashboard-main">
-      <div class="dashboard-header">
-        <h1>Admin Control Room</h1>
-        <div style="font-size:0.9rem; color:var(--text-muted);">Database: Connection Stable</div>
-      </div>
-
-      <!-- Stats Cards -->
-      <div class="dashboard-overview-cards">
-        <div class="dashboard-stat-card">
-          <div class="dashboard-stat-card-info">
-            <h4>Total Exhibitions</h4>
-            <p>8</p>
-          </div>
-          <div class="dashboard-stat-card-icon" style="color:var(--accent-orange); background-color:rgba(255,107,53,0.1);"><i class="fa-solid fa-calendar-days"></i></div>
-        </div>
-        <div class="dashboard-stat-card">
-          <div class="dashboard-stat-card-info">
-            <h4>Total Visitors</h4>
-            <p>240K+</p>
-          </div>
-          <div class="dashboard-stat-card-icon"><i class="fa-solid fa-users"></i></div>
-        </div>
-        <div class="dashboard-stat-card">
-          <div class="dashboard-stat-card-info">
-            <h4>Total Exhibitors</h4>
-            <p>5,000</p>
-          </div>
-          <div class="dashboard-stat-card-icon" style="color:#00b4d8; background-color:rgba(0,180,216,0.1);"><i class="fa-solid fa-store"></i></div>
-        </div>
-        <div class="dashboard-stat-card">
-          <div class="dashboard-stat-card-info">
-            <h4>Total Revenue</h4>
-            <p>$185K</p>
-          </div>
-          <div class="dashboard-stat-card-icon" style="color:var(--status-available); background-color:rgba(16,185,129,0.1);"><i class="fa-solid fa-wallet"></i></div>
-        </div>
-      </div>
-
-      <!-- SECTIONS CONTAINER -->
-      <!-- SECTION 1: OVERVIEW -->
-      <div id="overview" class="dashboard-section">
-        <div class="dashboard-grid-2">
-          <!-- Live Visitor Signups Chart Representation (Pure CSS bar chart animated by JS) -->
-          <div class="chart-card">
-            <h3>Visitor Registration Trends (Monthly)</h3>
-            <div class="bar-chart">
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 40%"></div>
-                <span class="chart-bar-label">Jan</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 55%"></div>
-                <span class="chart-bar-label">Feb</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 70%"></div>
-                <span class="chart-bar-label">Mar</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 60%"></div>
-                <span class="chart-bar-label">Apr</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 85%"></div>
-                <span class="chart-bar-label">May</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 95%"></div>
-                <span class="chart-bar-label">Jun</span>
-              </div>
+                <ul class="sidebar-menu" style="margin-top: 0;">
+                    <li>
+                        <a href="404.html" class="sidebar-item active" data-tab="overview">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                            <span>Overview &amp; Telemetry</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="sidebar-item" data-tab="volunteers">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                            <span>Volunteer Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="sidebar-item" data-tab="donations">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 8h3L12 5 8 10h3v4H8l4 5 4-5h-3v-4z"/></svg>
+                            <span>Donation Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="sidebar-item" data-tab="programs">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                            <span>Relief Campaigns</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="sidebar-item" data-tab="messages">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <span>Inquiry Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="sidebar-item" data-tab="settings">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                            <span>HQ Configuration</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="sidebar-item" data-tab="portal">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            <span>System Portal</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-          </div>
-
-          <!-- Pending Booth Approvals -->
-          <div class="chart-card">
-            <h3>Pending Exhibitor Approvals</h3>
-            <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background-color:var(--bg-light); border-radius:var(--border-radius-sm); border-left:4px solid var(--accent-orange);">
-                <div>
-                  <h4 style="font-size:0.95rem;">Veloct Auto EV</h4>
-                  <span style="font-size:0.8rem; color:var(--text-muted);">Requesting: Island Pavilion (6x6)</span>
-                </div>
-                <div style="display:flex; gap:10px;">
-                  <button onclick="alert('Approved!')" class="btn btn-primary" style="padding:4px 10px; font-size:0.75rem;"><i class="fa-solid fa-check"></i></button>
-                  <button onclick="alert('Rejected!')" class="btn btn-outline" style="padding:4px 10px; font-size:0.75rem; border-color:var(--status-occupied); color:var(--status-occupied);"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background-color:var(--bg-light); border-radius:var(--border-radius-sm); border-left:4px solid var(--accent-orange);">
-                <div>
-                  <h4 style="font-size:0.95rem;">Helios Lab Inc</h4>
-                  <span style="font-size:0.8rem; color:var(--text-muted);">Requesting: Premium Corner Stall</span>
-                </div>
-                <div style="display:flex; gap:10px;">
-                  <button onclick="alert('Approved!')" class="btn btn-primary" style="padding:4px 10px; font-size:0.75rem;"><i class="fa-solid fa-check"></i></button>
-                  <button onclick="alert('Rejected!')" class="btn btn-outline" style="padding:4px 10px; font-size:0.75rem; border-color:var(--status-occupied); color:var(--status-occupied);"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2: BOOTHS MANAGEMENT FLOOR MAP -->
-      <div id="booths" class="dashboard-section" style="display:none;">
-        <div class="dashboard-grid-2">
-          
-          <!-- Interactive Map Floor Plan -->
-          <div class="chart-card">
-            <h3>Exhibition Floor Map (Wing A Stalls)</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Click on a booth node to review coordinates and toggle reservations.</p>
             
-            <div class="booth-grid">
-              <!-- Row A -->
-              <div class="booth-card occupied" data-booth-num="A-101" data-status="occupied" data-size="3m x 3m" data-company="Nexis Core">
-                <div class="booth-number">A-101</div>
-                <span class="booth-status occupied">Occupied</span>
-              </div>
-              <div class="booth-card available" data-booth-num="A-102" data-status="available" data-size="3m x 3m" data-company="None">
-                <div class="booth-number">A-102</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card reserved" data-booth-num="A-103" data-status="reserved" data-size="3m x 3m" data-company="Apex Capital">
-                <div class="booth-number">A-103</div>
-                <span class="booth-status reserved">Reserved</span>
-              </div>
-              <div class="booth-card occupied" data-booth-num="A-104" data-status="occupied" data-size="3m x 3m" data-company="Veloct Auto">
-                <div class="booth-number">A-104</div>
-                <span class="booth-status occupied">Occupied</span>
-              </div>
-              <div class="booth-card available" data-booth-num="A-105" data-status="available" data-size="3m x 3m" data-company="None">
-                <div class="booth-number">A-105</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card available" data-booth-num="A-106" data-status="available" data-size="3m x 3m" data-company="None">
-                <div class="booth-number">A-106</div>
-                <span class="booth-status available">Available</span>
-              </div>
+            <a href="login.html" id="btn-logout" class="sidebar-item" style="color: var(--color-danger); margin-top: auto;">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                <span>Logout</span>
+            </a>
+        </aside>
 
-              <!-- Row B -->
-              <div class="booth-card available" data-booth-num="B-101" data-status="available" data-size="3m x 6m" data-company="None">
-                <div class="booth-number">B-101</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card occupied" data-booth-num="B-102" data-status="occupied" data-size="3m x 6m" data-company="Helios Lab">
-                <div class="booth-number">B-102</div>
-                <span class="booth-status occupied">Occupied</span>
-              </div>
-              <div class="booth-card available" data-booth-num="B-103" data-status="available" data-size="3m x 6m" data-company="None">
-                <div class="booth-number">B-103</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card reserved" data-booth-num="B-104" data-status="reserved" data-size="3m x 6m" data-company="Apex Capital">
-                <div class="booth-number">B-104</div>
-                <span class="booth-status reserved">Reserved</span>
-              </div>
-              <div class="booth-card available" data-booth-num="B-105" data-status="available" data-size="3m x 6m" data-company="None">
-                <div class="booth-number">B-105</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card available" data-booth-num="B-106" data-status="available" data-size="3m x 6m" data-company="None">
-                <div class="booth-number">B-106</div>
-                <span class="booth-status available">Available</span>
-              </div>
-
-              <!-- Row C -->
-              <div class="booth-card occupied" data-booth-num="C-101" data-status="occupied" data-size="6m x 6m" data-company="Canvas Media">
-                <div class="booth-number">C-101</div>
-                <span class="booth-status occupied">Occupied</span>
-              </div>
-              <div class="booth-card available" data-booth-num="C-102" data-status="available" data-size="6m x 6m" data-company="None">
-                <div class="booth-number">C-102</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card available" data-booth-num="C-103" data-status="available" data-size="6m x 6m" data-company="None">
-                <div class="booth-number">C-103</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card reserved" data-booth-num="C-104" data-status="reserved" data-size="6m x 6m" data-company="Midwest Power">
-                <div class="booth-number">C-104</div>
-                <span class="booth-status reserved">Reserved</span>
-              </div>
-              <div class="booth-card available" data-booth-num="C-105" data-status="available" data-size="6m x 6m" data-company="None">
-                <div class="booth-number">C-105</div>
-                <span class="booth-status available">Available</span>
-              </div>
-              <div class="booth-card occupied" data-booth-num="C-106" data-status="occupied" data-size="6m x 6m" data-company="Tokyo Fashion">
-                <div class="booth-number">C-106</div>
-                <span class="booth-status occupied">Occupied</span>
-              </div>
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Mobile Dashboard Header -->
+            <div class="mobile-dashboard-header">
+                <button class="mobile-sidebar-toggle" aria-label="Open Sidebar Menu">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                </button>
+                <span class="mobile-brand-title">Admin Console</span>
             </div>
-          </div>
+            
+            <!-- PANEL: OVERVIEW -->
+            <div id="panel-overview" class="dashboard-panel">
+                <!-- Welcome Banner Block -->
+                <div class="welcome-banner-card" style="margin-bottom: 24px; padding: 30px 40px; border-radius: var(--radius-lg); border: 1px solid rgba(0, 230, 118, 0.2); background: linear-gradient(135deg, #0c231a, #06180f); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);">
+                    <h1 class="welcome-banner-title" style="font-size: 2.2rem; font-weight: 800; color: white; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">HELLO, SURESH KAPPALA</h1>
+                    <p class="welcome-banner-desc" style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6; margin: 0; max-width: 800px;">Welcome to your emergency operations command console. Track active rescue requests, dispatch coordinates, volunteer task lists, and regional shelter occupancy indexes.</p>
+                </div>
+                
+                <!-- Main Console Layout Grid -->
+                <div class="console-row">
+                    
+                    <!-- Left Column (Main Console Modules) -->
+                    <div class="console-main-col">
+                        
+                        <!-- Top 3 Metric Cards Grid -->
+                        <div class="console-metrics-grid">
+                            <!-- Card 1 -->
+                            <div class="dashboard-card" style="padding: 20px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Relief Funds Raised</span>
+                                <h3 style="font-size: 1.8rem; margin: 10px 0; color: white;">$4.8M / $5.0M</h3>
+                                <div class="progress-bar" style="height: 6px; margin-bottom: 8px;">
+                                    <div class="progress-fill" style="width: 96%;"></div>
+                                </div>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Goal status: <strong style="color: #00E676;">96% reached</strong></span>
+                            </div>
+                            
+                            <!-- Card 2 -->
+                            <div class="dashboard-card" style="padding: 20px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Active Volunteers Force</span>
+                                <h3 style="font-size: 1.8rem; margin: 10px 0; color: white;" id="count-active-volunteers">1,248</h3>
+                                <div class="progress-bar" style="height: 6px; margin-bottom: 8px;">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted);">On Duty: <strong style="color: #00E676;">Fully Dispatched</strong></span>
+                            </div>
+                            
+                            <!-- Card 3 -->
+                            <div class="dashboard-card" style="padding: 20px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Total Rescued &amp; Helped</span>
+                                <h3 style="font-size: 1.8rem; margin: 10px 0; color: white;">24,500+</h3>
+                                <div class="progress-bar" style="height: 6px; margin-bottom: 8px;">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Target recovery rate: <strong style="color: #00E676;">99.8% safe</strong></span>
+                            </div>
+                        </div>
 
-          <!-- Selected Stall Detail Panel -->
-          <div class="chart-card">
-            <h3>Selected Stall Details</h3>
-            <div style="margin-top:20px; display:flex; flex-direction:column; gap:15px; font-size:0.95rem;">
-              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(15,23,42,0.05); padding-bottom:8px;">
-                <span>Stall Coordinate Code</span>
-                <strong id="selected-booth-num" style="color:var(--accent-orange);">A-102</strong>
-              </div>
-              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(15,23,42,0.05); padding-bottom:8px;">
-                <span>Current Status</span>
-                <span id="selected-booth-status" class="booth-status available">Available</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(15,23,42,0.05); padding-bottom:8px;">
-                <span>Physical Size Dimensions</span>
-                <strong id="selected-booth-size">3m x 3m</strong>
-              </div>
-              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(15,23,42,0.05); padding-bottom:8px;">
-                <span>Assigned Company</span>
-                <strong id="selected-booth-company">None</strong>
-              </div>
-              
-              <div style="margin-top: 20px;">
-                <!-- Reservation Toggle Button (updates floor grid visually via js/script.js) -->
-                <button id="btn-reserve-booth" class="btn btn-primary" style="width:100%;">Reserve Booth</button>
-              </div>
+                        <!-- Middle Card: Active Operations -->
+                        <div class="dashboard-card" style="padding: 20px; display: flex; flex-direction: column; justify-content: center; min-height: 140px;">
+                            <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Active Operations Node</span>
+                            <h3 style="font-size: 2.2rem; margin: 10px 0; color: white;">Level 3 Emergency Ops Active</h3>
+                            <div class="progress-bar" style="height: 8px; margin-bottom: 10px; width: 100%;">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted);">Consensus status: <strong style="color: #00E676;">All local command centers fully operational</strong></span>
+                        </div>
+
+                        <!-- Bottom Area: Active Relief Command Nodes table -->
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h3 style="font-size: 1.1rem; color: white;">Active Relief Command Nodes</h3>
+                                <button class="btn btn-primary btn-sm" style="font-size: 0.75rem; padding: 6px 12px;">Add Dispatch Node</button>
+                            </div>
+                            <div class="table-wrapper" style="overflow-x: auto;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Command Station</th>
+                                            <th>Assigned Region</th>
+                                            <th>Shelter Occupancy</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Station Alpha</td>
+                                            <td>City North Gym Sector</td>
+                                            <td><code>85% Capacity</code></td>
+                                            <td><span class="status-badge active" style="background-color: rgba(0, 230, 118, 0.1) !important; border-color: rgba(0, 230, 118, 0.3) !important; color: #00E676 !important;">OPERATIONAL</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Station Beta</td>
+                                            <td>Central Stadium Safe Zone</td>
+                                            <td><code>100% Full</code></td>
+                                            <td><span class="status-badge active" style="background-color: rgba(255, 82, 82, 0.1) !important; border-color: rgba(255, 82, 82, 0.3) !important; color: #FF5252 !important;">CRITICAL LOAD</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Station Gamma</td>
+                                            <td>Metro Arena Field Ward</td>
+                                            <td><code>42% Capacity</code></td>
+                                            <td><span class="status-badge active" style="background-color: rgba(0, 230, 118, 0.1) !important; border-color: rgba(0, 230, 118, 0.3) !important; color: #00E676 !important;">OPERATIONAL</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column (Sidebar Modules) -->
+                    <div class="console-side-col">
+                        
+                        <!-- Side Module 1: Telemetry Quota -->
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #00E676;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                                Emergency Supplies Distributed
+                            </h3>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted);">Ration Bags &amp; Kits</span>
+                            <div style="display: flex; justify-content: space-between; margin: 8px 0; font-weight: 600;">
+                                  <span>Allocated</span>
+                                  <span style="color: #00E676;">24,500 / 30,000</span>
+                            </div>
+                            <div class="progress-bar" style="height: 6px;">
+                                  <div class="progress-fill" style="width: 81.6%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Side Module Region Latency -->
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #00E676;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                                Command Centers Active
+                            </h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>North Evacuation Center</span>
+                                    <span style="color: #00E676; font-weight: 600;">Active</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>East Shelter Safe Zone</span>
+                                    <span style="color: #00E676; font-weight: 600;">Active</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                    <span>South Medical Clinic</span>
+                                    <span style="color: #00E676; font-weight: 600;">Active</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side Module 3: Emergency Dispatch Form -->
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Emergency Dispatch Portal</h3>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted); display: block; margin-bottom: 8px;">Trigger Emergency Message Alert:</span>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <input type="text" class="form-control" placeholder="Enter emergency target region..." style="font-size: 0.8rem; padding: 8px 12px;">
+                                <button class="btn btn-primary btn-sm" style="width: 100%; font-size: 0.8rem; padding: 8px 12px;" onclick="showToast('Emergency Alert Broadcasted!');">Broadcast Alert</button>
+                            </div>
+                        </div>
+
+                        <!-- Side Module 4: Central Depots Stock -->
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #00E676;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                                Central Depots Stock
+                            </h3>
+                            <span style="font-size: 0.8rem; color: var(--color-text-muted); display: block; margin-bottom: 10px;">Emergency Warehouses capacity:</span>
+                            <div style="margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                                    <span>West Depot (Trauma Kits)</span>
+                                    <span style="color: #00E676;">94%</span>
+                                </div>
+                                <div class="progress-bar" style="height: 4px;">
+                                    <div class="progress-fill" style="width: 94%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                                    <span>East Depot (Dry Rations)</span>
+                                    <span style="color: #FF9F1C;">42%</span>
+                                </div>
+                                <div class="progress-bar" style="height: 4px;">
+                                    <div class="progress-fill" style="width: 42%; background-color: #FF9F1C;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side Module 5: Meteorological Alert Feed -->
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #FF5252;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                                Weather Warnings Feed
+                            </h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div style="padding: 8px 12px; background-color: rgba(230,57,70,0.1); border-left: 3px solid var(--color-danger); border-radius: 4px; font-size: 0.8rem;">
+                                    <div style="font-weight: 700; color: var(--color-danger);">Typhoon Warning</div>
+                                    <div style="color: var(--color-text-muted); font-size: 0.75rem; margin-top: 2px;">Sector Alpha Coastal - Level Red</div>
+                                </div>
+                                <div style="padding: 8px 12px; background-color: rgba(255,159,28,0.1); border-left: 3px solid #FF9F1C; border-radius: 4px; font-size: 0.8rem;">
+                                    <div style="font-weight: 700; color: #FF9F1C;">Wind Surge Alert</div>
+                                    <div style="color: var(--color-text-muted); font-size: 0.75rem; margin-top: 2px;">Sector Delta Inland - Level Orange</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-          </div>
+            
+            <!-- PANEL: VOLUNTEERS -->
+            <div id="panel-volunteers" class="dashboard-panel" style="display: none;">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Volunteer Force Management</h2>
+                        <p>Review newly registered humanitarian volunteers, coordinate team assignments, and approve duty dispatches.</p>
+                    </div>
+                </div>
+                
+                <div class="console-row">
+                    <div class="console-main-col">
+                        <!-- Volunteer Statistics Grid -->
+                        <div class="console-metrics-grid" style="margin-bottom: 24px;">
+                            <div class="dashboard-card" style="padding: 16px;">
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Total Registered Force</span>
+                                <h4 style="font-size: 1.4rem; margin: 4px 0; color: white;">1,542 Personnel</h4>
+                            </div>
+                            <div class="dashboard-card" style="padding: 16px;">
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Medically Certified</span>
+                                <h4 style="font-size: 1.4rem; margin: 4px 0; color: white;">342 First-Aiders</h4>
+                            </div>
+                            <div class="dashboard-card" style="padding: 16px;">
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Currently in Field</span>
+                                <h4 style="font-size: 1.4rem; margin: 4px 0; color: #00E676;">1,120 On Duty</h4>
+                            </div>
+                        </div>
 
-        </div>
-      </div>
+                        <div class="dashboard-content-card" style="padding: 20px;">
+                            <h3 style="font-size: 1.1rem; color: white; margin-bottom: 15px;">Pending Field Approvals</h3>
+                            <div class="table-wrapper">
+                                <table class="db-table" aria-label="Volunteer Management Table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Volunteer Name</th>
+                                            <th scope="col">Specialty / Role</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Registered</th>
+                                            <th scope="col">Assigned Sector</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Carter</td>
+                                            <td>Medical / First Aid</td>
+                                            <td><span class="status-badge pending" style="background-color: rgba(255, 179, 0, 0.1) !important; border-color: rgba(255, 179, 0, 0.3) !important; color: #FFB300 !important;">PENDING</span></td>
+                                            <td>2 hours ago</td>
+                                            <td>Sector Alpha (Medical Unit)</td>
+                                            <td><button class="btn btn-primary btn-sm btn-approve-volunteer">Approve</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sarah Connor</td>
+                                            <td>Search &amp; Rescue</td>
+                                            <td><span class="status-badge completed">APPROVED</span></td>
+                                            <td>Yesterday</td>
+                                            <td>Sector Beta (Flood Boats)</td>
+                                            <td><button class="btn btn-secondary btn-sm" disabled style="background: transparent; border: none; color: var(--color-text-muted);">Approved</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>James Cole</td>
+                                            <td>Supply Logistics</td>
+                                            <td><span class="status-badge completed">APPROVED</span></td>
+                                            <td>2 days ago</td>
+                                            <td>Sector Gamma (Food Supply)</td>
+                                            <td><button class="btn btn-secondary btn-sm" disabled style="background: transparent; border: none; color: var(--color-text-muted);">Approved</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-      <!-- SECTION 3: MANAGE EXHIBITORS -->
-      <div id="exhibitors" class="dashboard-section" style="display:none;">
-        <div class="chart-card">
-          <h3 style="margin-bottom:20px;">Exhibitors Directory Roster</h3>
-          <div class="table-responsive"><table style="width:100%; border-collapse:collapse; font-size:0.95rem; text-align:left;">
-            <thead>
-              <tr style="border-bottom:2px solid rgba(15,23,42,0.05); color:var(--text-muted);">
-                <th style="padding:12px;">Company</th>
-                <th style="padding:12px;">Industry</th>
-                <th style="padding:12px;">Booth Coordinates</th>
-                <th style="padding:12px;">Contact Email</th>
-                <th style="padding:12px;">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom:1px solid rgba(15,23,42,0.05);">
-                <td style="padding:12px; font-weight:600;">Nexis Core</td>
-                <td style="padding:12px;">Software & Tech</td>
-                <td style="padding:12px;">A-101</td>
-                <td style="padding:12px;">support@nexis.com</td>
-                <td style="padding:12px;">
-                  <button onclick="alert('Editing Nexis Core')" class="btn btn-outline" style="padding:4px 8px; font-size:0.75rem;"><i class="fa-regular fa-edit"></i></button>
-                  <button onclick="confirm('Delete Nexis Core?') && this.closest('tr').remove()" class="btn btn-outline" style="padding:4px 8px; font-size:0.75rem; border-color:var(--status-occupied); color:var(--status-occupied);"><i class="fa-regular fa-trash-can"></i></button>
-                </td>
-              </tr>
-              <tr style="border-bottom:1px solid rgba(15,23,42,0.05);">
-                <td style="padding:12px; font-weight:600;">Veloct Auto</td>
-                <td style="padding:12px;">Automotive</td>
-                <td style="padding:12px;">A-104</td>
-                <td style="padding:12px;">info@veloct.com</td>
-                <td style="padding:12px;">
-                  <button onclick="alert('Editing Veloct Auto')" class="btn btn-outline" style="padding:4px 8px; font-size:0.75rem;"><i class="fa-regular fa-edit"></i></button>
-                  <button onclick="confirm('Delete Veloct Auto?') && this.closest('tr').remove()" class="btn btn-outline" style="padding:4px 8px; font-size:0.75rem; border-color:var(--status-occupied); color:var(--status-occupied);"><i class="fa-regular fa-trash-can"></i></button>
-                </td>
-              </tr>
-              <tr style="border-bottom:1px solid rgba(15,23,42,0.05);">
-                <td style="padding:12px; font-weight:600;">Helios Lab</td>
-                <td style="padding:12px;">Healthcare</td>
-                <td style="padding:12px;">B-102</td>
-                <td style="padding:12px;">contact@helios.com</td>
-                <td style="padding:12px;">
-                  <button onclick="alert('Editing Helios Lab')" class="btn btn-outline" style="padding:4px 8px; font-size:0.75rem;"><i class="fa-regular fa-edit"></i></button>
-                  <button onclick="confirm('Delete Helios Lab?') && this.closest('tr').remove()" class="btn btn-outline" style="padding:4px 8px; font-size:0.75rem; border-color:var(--status-occupied); color:var(--status-occupied);"><i class="fa-regular fa-trash-can"></i></button>
-                </td>
-              </tr>
-            </tbody>
-          </table></div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: ANALYTICS -->
-      <div id="analytics" class="dashboard-section" style="display:none;">
-        <div class="dashboard-grid-2">
-          
-          <!-- Revenue segments -->
-          <div class="chart-card">
-            <h3>Revenue segmentation by Channel</h3>
-            <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:5px;">
-                  <span>Booth Stalls Lease (Sales: $120,000)</span>
-                  <strong>65%</strong>
+                    <div class="console-side-col">
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Active Training Pathways</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 12px;">
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                        <span>Orientation Seminar</span>
+                                        <span style="color: #00E676;">98% Completed</span>
+                                    </div>
+                                    <div class="progress-bar" style="height: 4px;"><div class="progress-fill" style="width: 98%;"></div></div>
+                                </li>
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                        <span>First-Aid Certification</span>
+                                        <span style="color: #00E676;">84% Completed</span>
+                                    </div>
+                                    <div class="progress-bar" style="height: 4px;"><div class="progress-fill" style="width: 84%;"></div></div>
+                                </li>
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                        <span>Field Mock Exercises</span>
+                                        <span style="color: #FF5252;">72% Completed</span>
+                                    </div>
+                                    <div class="progress-bar" style="height: 4px;"><div class="progress-fill" style="width: 72%; background-color: #FF5252;"></div></div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Volunteer Shift Roster card -->
+                        <div class="dashboard-card" style="padding: 20px; margin-top: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Active Duty Shifts</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Shift A (08:00 - 16:00):</span>
+                                    <strong>42 Active</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Shift B (16:00 - 00:00):</span>
+                                    <strong>30 Active</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Shift C (00:00 - 08:00):</span>
+                                    <strong>18 Standby</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div style="width:100%; height:8px; background-color:var(--bg-light); border-radius:4px; overflow:hidden;">
-                  <div style="width:65%; height:100%; background-color:var(--accent-orange);"></div>
-                </div>
-              </div>
-
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:5px;">
-                  <span>Visitor VIP Pass Bookings (Sales: $45,000)</span>
-                  <strong>24%</strong>
-                </div>
-                <div style="width:100%; height:8px; background-color:var(--bg-light); border-radius:4px; overflow:hidden;">
-                  <div style="width:24%; height:100%; background-color:var(--accent-gold);"></div>
-                </div>
-              </div>
-
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:5px;">
-                  <span>Corporate Sponsorships (Sales: $20,000)</span>
-                  <strong>11%</strong>
-                </div>
-                <div style="width:100%; height:8px; background-color:var(--bg-light); border-radius:4px; overflow:hidden;">
-                  <div style="width:11%; height:100%; background-color:var(--status-available);"></div>
-                </div>
-              </div>
             </div>
-          </div>
+            
+            <!-- PANEL: DONATIONS -->
+            <div id="panel-donations" class="dashboard-panel" style="display: none;">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Recent Donor Contributions Tracker</h2>
+                        <p>Track incoming financial pledges, check payment verification, and view allocation sectors.</p>
+                    </div>
+                    <button class="btn btn-primary btn-sm">Log Manual Pledge</button>
+                </div>
+                
+                <div class="console-row">
+                    <div class="console-main-col">
+                        <!-- Donation Summary Grid -->
+                        <div class="console-metrics-grid" style="margin-bottom: 24px;">
+                            <div class="dashboard-card" style="padding: 16px;">
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Pledged Contributions</span>
+                                <h4 style="font-size: 1.4rem; margin: 4px 0; color: white;">$4,821,500.00</h4>
+                            </div>
+                            <div class="dashboard-card" style="padding: 16px;">
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Total Cleared Funds</span>
+                                <h4 style="font-size: 1.4rem; margin: 4px 0; color: #00E676;">$4,520,000.00</h4>
+                            </div>
+                            <div class="dashboard-card" style="padding: 16px;">
+                                <span style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Direct Aid Conversion</span>
+                                <h4 style="font-size: 1.4rem; margin: 4px 0; color: white;">92.4% Allocated</h4>
+                            </div>
+                        </div>
 
-          <!-- Export data -->
-          <div class="chart-card">
-            <h3>Database Reporting Export</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Download complete spreadsheet datasets of registered visitors, speaker rosters, or lease invoices.</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
-              <button onclick="alert('Exporting Visitors Data')" class="btn btn-outline" style="font-size:0.8rem;"><i class="fa-solid fa-file-csv"></i> Visitors CSV</button>
-              <button onclick="alert('Exporting Lease Receipts')" class="btn btn-outline" style="font-size:0.8rem;"><i class="fa-solid fa-file-pdf"></i> Billing PDF</button>
+                        <div class="dashboard-content-card" style="padding: 20px;">
+                            <h3 style="font-size: 1.1rem; color: white; margin-bottom: 15px;">Transaction History Ledger</h3>
+                            <div class="table-wrapper">
+                                <table class="db-table" aria-label="Recent Donations Table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Donor Name</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Relief Campaign Target</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Date Logged</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Wayne Enterprises</td>
+                                            <td><strong>$50,000.00</strong></td>
+                                            <td>Coastal Floods Reconstruction</td>
+                                            <td><span class="status-badge completed">CLEARED</span></td>
+                                            <td>Jul 10, 2026</td>
+                                            <td><button class="btn btn-secondary btn-sm" style="border-color: rgba(255,255,255,0.15); color: white;">Details</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stark Industries</td>
+                                            <td><strong>$25,000.00</strong></td>
+                                            <td>Cyclone Temporary Shelters</td>
+                                            <td><span class="status-badge completed">CLEARED</span></td>
+                                            <td>May 24, 2026</td>
+                                            <td><button class="btn btn-secondary btn-sm" style="border-color: rgba(255,255,255,0.15); color: white;">Details</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>LexCorp Relief</td>
+                                            <td><strong>$10,000.00</strong></td>
+                                            <td>Medical Team Support</td>
+                                            <td><span class="status-badge pending" style="background-color: rgba(255,179,0,0.1) !important; border-color: rgba(255,179,0,0.3) !important; color: #FFB300 !important;">PROCESSING</span></td>
+                                            <td>Jan 15, 2026</td>
+                                            <td><button class="btn btn-secondary btn-sm" style="border-color: rgba(255,255,255,0.15); color: white;">Details</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="console-side-col">
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Top Corporate Sponsors</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Global Health Reserves</span>
+                                    <strong>$120k</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Food Logistics Alliance</span>
+                                    <strong>$95k</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Safety Engineering Group</span>
+                                    <strong>$60k</strong>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Funding Allocation Targets card -->
+                        <div class="dashboard-card" style="padding: 20px; margin-top: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Funding Allocation Targets</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Rapid First Response:</span>
+                                    <strong style="color: #00E676;">50% Active</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Reconstruction Grants:</span>
+                                    <strong>30% Active</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Medical Clinic Assets:</span>
+                                    <strong>20% Active</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            
+            <!-- PANEL: PROGRAMS -->
+            <div id="panel-programs" class="dashboard-panel" style="display: none;">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Relief Program Status Panel</h2>
+                        <p>Adjust program operational target statistics dynamically below.</p>
+                    </div>
+                </div>
+                
+                <div class="console-row">
+                    <div class="console-main-col">
+                        <div class="dashboard-grid" style="margin-bottom: 0;">
+                            <!-- Program Item 1 -->
+                            <div class="dashboard-content-card program-control-item" style="padding: 24px;">
+                                <h4 style="margin-bottom: 6px; font-weight: 700; color: var(--color-primary);">Monsoon Floods Relief</h4>
+                                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 20px;">Flood rescue and supply bags dispatch.</p>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">
+                                        <span>Adjust Progress</span>
+                                        <span class="progress-percentage" style="color: var(--color-secondary);">82%</span>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="82" class="form-control program-progress-slider" style="padding: 5px 0; background: transparent; cursor: pointer;">
+                                </div>
+                            </div>
+                            <!-- Program Item 2 -->
+                            <div class="dashboard-content-card program-control-item" style="padding: 24px;">
+                                <h4 style="margin-bottom: 6px; font-weight: 700; color: var(--color-primary);">Cyclone Rehabilitation</h4>
+                                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 20px;">Housing rebuild and solar grids.</p>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">
+                                        <span>Adjust Progress</span>
+                                        <span class="progress-percentage" style="color: var(--color-secondary);">58%</span>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="58" class="form-control program-progress-slider" style="padding: 5px 0; background: transparent; cursor: pointer;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
-      </div>
+                    <div class="console-side-col">
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Active Campaigns List</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #00E676;"></div>
+                                    <span>Food Supplies Drop (Active)</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #00E676;"></div>
+                                    <span>Clean Water Station setup</span>
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #FF9F1C;"></div>
+                                    <span>Community Rebuild (Pending)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Logistics Dispatch Centers card -->
+                        <div class="dashboard-card" style="padding: 20px; margin-top: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Logistics Centers</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Center Alpha (Coast):</span>
+                                    <strong style="color: #00E676;">Active</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Center Beta (Inland):</span>
+                                    <strong>Standby</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Center Delta (North):</span>
+                                    <strong style="color: #FF5252;">Offline</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PANEL: MESSAGES -->
+            <div id="panel-messages" class="dashboard-panel" style="display: none;">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Inquiry Message Center</h2>
+                        <p>Reply directly to incoming public contact messages below.</p>
+                    </div>
+                </div>
+                
+                <div class="console-row">
+                    <div class="console-main-col">
+                        <div class="dashboard-content-card" style="padding: 20px;">
+                            <div class="table-wrapper">
+                                <table class="db-table" id="admin-messages-table" aria-label="HQ Messages Table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Sender</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Message Content</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>David Vance</td>
+                                            <td>david@vance-refrigeration.com</td>
+                                            <td>Would like to pledge $2,000 corporate matching funds for fire victims. Who do we coordinate with?</td>
+                                            <td><span class="status-badge pending" style="background-color: rgba(255,179,0,0.1) !important; border-color: rgba(255,179,0,0.3) !important; color: #FFB300 !important;">New Inquest</span></td>
+                                            <td><button class="btn btn-primary btn-sm btn-reply-message">Reply</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dr. Amanda Ross</td>
+                                            <td>amanda@medical-reserves.org</td>
+                                            <td>I have a team of 4 physicians ready for deployment to the monsoon sector. Can you provide base coordinates?</td>
+                                            <td><span class="status-badge pending" style="background-color: rgba(255,179,0,0.1) !important; border-color: rgba(255,179,0,0.3) !important; color: #FFB300 !important;">New Inquest</span></td>
+                                            <td><button class="btn btn-primary btn-sm btn-reply-message">Reply</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Clara Oswald</td>
+                                            <td>clara@example.com</td>
+                                            <td>Just registered as a logistics volunteer, looking forward to safety training modules.</td>
+                                            <td><span class="status-badge success">Replied</span></td>
+                                            <td><button class="btn btn-secondary btn-sm" disabled style="border: none; background: transparent; color: var(--color-text-muted);">Replied</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-    </main>
-  </div>
+                    <div class="console-side-col">
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Inbox Statistics</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Unread Inquiries:</span>
+                                    <strong>2 Messages</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Average Speed:</span>
+                                    <strong style="color: #00E676;">12 mins response</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Help Rating:</span>
+                                    <strong style="color: #00E676;">98.6% rating</strong>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- HQ Liaison Roster card -->
+                        <div class="dashboard-card" style="padding: 20px; margin-top: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">HQ Command Roster</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Marcus Aurelius:</span>
+                                    <strong>Lead Commander</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                    <span>Elena Rostova:</span>
+                                    <strong>Communications</strong>
+                                </li>
+                                <li style="display: flex; justify-content: space-between;">
+                                    <span>Julian Vance:</span>
+                                    <strong>Logistics Coordinator</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PANEL: SETTINGS -->
+            <div id="panel-settings" class="dashboard-panel" style="display: none;">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>HQ System Configuration</h2>
+                        <p>Adjust system thresholds and operational parameters.</p>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <form id="admin-settings-form" data-validate>
+                        <div class="form-group">
+                            <label class="form-label" for="eoc-commander">EOC Commander Name *</label>
+                            <input type="text" id="eoc-commander" class="form-control" value="Director Marcus Aurelius" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="alert-threshold">Disaster Trigger Alert Threshold (Radius km) *</label>
+                                <input type="number" id="alert-threshold" class="form-control" value="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reserve-target">Global Emergency Reserve Goal (USD $) *</label>
+                                <input type="number" id="reserve-target" class="form-control" value="500000" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Save Config Settings</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- PANEL: PORTAL -->
+            <div id="panel-portal" class="dashboard-panel" style="display: none;">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Infrastructure System Portal</h2>
+                        <p>Consolidated infrastructure status, main public website gateway loads, and regional server nodes.</p>
+                    </div>
+                </div>
+                
+                <div class="console-row">
+                    <div class="console-main-col">
+                        <div class="console-metrics-grid">
+                            <div class="dashboard-card" style="padding: 20px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Main NGO Portal</span>
+                                <h3 style="font-size: 1.8rem; margin: 10px 0; color: #00E676;">ONLINE</h3>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Response: <strong style="color: #00E676;">100% active</strong></span>
+                            </div>
+                            <div class="dashboard-card" style="padding: 20px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Gateway Requests</span>
+                                <h3 style="font-size: 1.8rem; margin: 10px 0; color: white;">4,210 req/s</h3>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Average latency: <strong style="color: #00E676;">8.5ms</strong></span>
+                            </div>
+                            <div class="dashboard-card" style="padding: 20px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted);">Global CDNs</span>
+                                <h3 style="font-size: 1.8rem; margin: 10px 0; color: white;">99.99%</h3>
+                                <span style="font-size: 0.75rem; color: var(--color-text-muted);">CDN integrity: <strong style="color: #00E676;">Stable</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1.1rem; color: white; margin-bottom: 15px;">System Gateway Nodes</h3>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Server Node</th>
+                                            <th>Zone</th>
+                                            <th>Load Level</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>primary-gateway-01</td>
+                                            <td>us-east-1a</td>
+                                            <td><strong>24%</strong></td>
+                                            <td><span class="status-badge completed">Success</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>backup-gateway-02</td>
+                                            <td>us-west-2b</td>
+                                            <td><strong>12%</strong></td>
+                                            <td><span class="status-badge completed">Success</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>edge-node-eu-01</td>
+                                            <td>eu-west-1c</td>
+                                            <td><strong>48%</strong></td>
+                                            <td><span class="status-badge completed">Success</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="console-side-col">
+                        <div class="dashboard-card" style="padding: 20px;">
+                            <h3 style="font-size: 1rem; color: white; margin-bottom: 12px;">Quick Portal Actions</h3>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <a href="index.html" class="btn btn-primary btn-sm" style="text-decoration: none; text-align: center;">View Home Landing Page</a>
+                                <a href="about.html" class="btn btn-secondary btn-sm" style="text-decoration: none; text-align: center; color: white; border-color: rgba(255,255,255,0.15);">View About Portal</a>
+                                <a href="contact.html" class="btn btn-secondary btn-sm" style="text-decoration: none; text-align: center; color: white; border-color: rgba(255,255,255,0.15);">View Help Desk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
 
-  <!-- Scripts -->
-  <script src="js/script.js?v=7.0"></script>
+    <script src="js/validation.js?v=1.4"></script>
+    <script src="js/dashboard.js?v=1.6"></script>
+    <script src="js/main.js?v=2.7"></script>
 </body>
 </html>
